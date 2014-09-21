@@ -195,7 +195,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">
+				<button type="button" class="close" data-dismiss="modal" onclick="clearform(event)">
 					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 				</button>
 				<h4 class="modal-title">報名完畢</h4>
@@ -209,7 +209,7 @@
 				</p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="clearform(event)">
 					Close
 				</button>
 			</div>
@@ -220,7 +220,12 @@
      function aftersubmitted(event)
      {
        $('#reg_cp').modal('show');
-       $('#ss-form').closest('form').find("input[type=email], select, input[type=text], textarea").val("");
      }
+</script>
+<script>
+	function clearform(event) {
+
+		$('#ss-form').closest('form').find("input[type=email], select, input[type=text], textarea").val("");
+	}
 </script>
 
