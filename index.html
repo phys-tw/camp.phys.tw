@@ -26,9 +26,12 @@
     			font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
     		}
     	</style>
+    	
 	</head>
 
 	<body>
+		
+		
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			  <div class="container-fluid">
 			    <!-- Brand and toggle get grouped for better mobile display -->
@@ -170,7 +173,7 @@
 			</div>
 			
 			<div class="section" id="section4">
-				<div class="container">
+				<div class="container" style="position: relative">
 					<div class="row">
 						<div class="col-xs-6">
 							<h1>--</h1>
@@ -186,7 +189,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-6"></div>
-						<div class="col-xs-5">
+						<div class="col-xs-5" >
 							<h1>聯絡我們</h1>
 							<p>
 								email: camp@phys.tw
@@ -205,26 +208,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
-	<!-- This following line is needed in case of using the default easing option or when using another
- one rather than "linear" or "swing". You can also add the full jQuery UI instead of this file if you prefer -->
-	<script src="js/vendors/jquery.slimscroll.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('#fullpage').fullpage(
-				{
-    				menu: '#myMenu',
-    				anchors: ['history','qa','information','reg','contact'],
-    				navigation:true,
-    				scrollOverflow: true
-				}
-			);
+    
+    <script>
+		$(function() {
+			$("#includedContent").load("reg_core.html");
 		});
 	</script>
+    
+    <!-- This following line is needed in case of using the default easing option or when using another
+ one rather than "linear" or "swing". You can also add the full jQuery UI instead of this file if you prefer -->
+	<script src="js/vendors/jquery.slimscroll.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
 	<script>
-			$(function() {
-				$("#includedContent").load("reg_core.html");
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				menu : '#myMenu',
+				anchors : ['history', 'qa', 'information', 'reg', 'contact'],
+				navigation : true,
+				scrollOverflow : true
 			});
+		}); 
 	</script>
+	
 </body>
 </html>
