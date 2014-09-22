@@ -33,34 +33,68 @@
 		
 		
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			  <div class="container-fluid">
-			    <!-- Brand and toggle get grouped for better mobile display -->
-			    <div class="navbar-header">
-			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-			        <span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			      </button>
-			      <a class="navbar-brand" href="#">Final Theory</a>
-			    </div>
-			
-			    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			      <ul class="nav navbar-nav" id="myMenu">
-			        <li data-menuanchor="history"><a href="#history">營隊簡史</a></li>
-			        <li data-menuanchor="qa"><a href="#qa">常見問題</a></li>
-			        <li data-menuanchor="information"><a href="#information">匯款資訊</a></li>
-			        <li data-menuanchor="reg"><a href="#reg">報名專區</a></li>
-			        <li data-menuanchor="contact"><a href="#contact">聯絡我們</a></li>
-			      </ul>
-			      
-			    </div><!-- /.navbar-collapse -->
-			  </div><!-- /.container-fluid -->
-			</nav>
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#cover">Final Theory</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav" id="myMenu">
+						<li data-menuanchor="story">
+							<a href="#story">營隊故事</a>
+						</li>
+						<li data-menuanchor="history">
+							<a href="#history">營隊簡史</a>
+						</li>
+						<li data-menuanchor="qa">
+							<a href="#qa">常見問題</a>
+						</li>
+						<li data-menuanchor="information">
+							<a href="#information">匯款資訊</a>
+						</li>
+						<li data-menuanchor="reg">
+							<a href="#reg">報名專區</a>
+						</li>
+						<li data-menuanchor="contact">
+							<a href="#contact">聯絡我們</a>
+						</li>
+						<li data-menuanchor="sponser">
+							<a href="#sponser">贊助廠商</a>
+						</li>
+					</ul>
+
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
 		
 		
 		<div id="fullpage">
+			
+			<div class="section" id="section_cover">
+				
+			</div>
+			
+			<div class="section" id="section0">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-6">
+							<h1>營隊故事</h1>
+						</div>
+						<div class="col-xs-6">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			
 			<div class="section" id="section1">
 				<div class="container">
@@ -163,8 +197,8 @@
 			<div class="section" id="section3">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-1"></div>
-						<div class="col-xs-5">
+						<div class="col-xs-6"></div>
+						<div class="col-xs-6">
 							<h1>匯款資訊</h1>
 							<p>--------------------------------------------------------------------------------------</p>
 						</div>
@@ -180,6 +214,11 @@
 							<h1>報名專區</h1>
 		                     <p>若報名頁面無法正常顯示 <a href="reg.html" target="_blank">按此彈出視窗</a></p>
 							 <div id="includedContent"></div>
+							 <br />
+							 <br />
+							 <br />
+							 <br />
+							 <br />
 						</div>
 					</div>
 				</div>
@@ -189,7 +228,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-6"></div>
-						<div class="col-xs-5" >
+						<div class="col-xs-6" >
 							<h1>聯絡我們</h1>
 							<p>
 								email: camp@phys.tw
@@ -198,8 +237,19 @@
 					</div>
 				</div>
 			</div>
-
+			
+			<div class="section" id="section6">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>贊助廠商</h1>
+						</div>
+						
+					</div>
+				</div>
 			</div>
+
+		</div>
 		
 		
 	<!-- Bootstrap core JavaScript
@@ -223,7 +273,7 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				menu : '#myMenu',
-				anchors : ['history', 'qa', 'information', 'reg', 'contact'],
+				anchors : ['cover','story','history', 'qa', 'information', 'reg', 'contact','sponser'],
 				navigation : true,
 				scrollOverflow : true
 			});
