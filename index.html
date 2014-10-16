@@ -83,6 +83,9 @@
 						<li data-menuanchor="history">
 							<a href="#history">營隊簡史</a>
 						</li>
+						<li data-menuanchor="table">
+							<a href="#table">活動簡介</a>
+						</li>
 						<li data-menuanchor="qa">
 							<a href="#qa">常見問題</a>
 						</li>
@@ -158,6 +161,59 @@
 						</div>
 						<div class="col-md-6">
 							<iframe width="634" height="315" src="//www.youtube.com/embed/XkptRLIVUdE" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section" id="sectionnew">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h1>活動簡介</h1>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th></th>
+										<th>Day 1</th>
+										<th>Day 2</th>
+										<th>Day 3</th>
+										<th>Day 4</th>
+										<th>Day 5</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>上午</th>
+										<td></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="從基礎的科學研究，到生活中的科技應用，最後是對科學精神的反思。三場演講，不只學習科學新知，更是透過教授們的引導，體會科學家的精神。">學術演講</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="藏著消失密室的是古老的公廁，藏著消失祕寶的又是？你願意為了得到它而付出腦力、體力和所有氣力嗎？祕寶就在那，想要它就自己去尋找吧！">尋寶遊戲</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="從基礎的科學研究，到生活中的科技應用，最後是對科學精神的反思。三場演講，不只學習科學新知，更是透過教授們的引導，體會科學家的精神。">學術演講</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="在一場平靜似水的檯面上，背後暗藏著的竟是人心互鬥的層層詭計？本遊戲讓你身歷卡牌之境，要如何自保、窺伺、偵查？全靠你與生俱來的智慧與勇氣！">3D卡牌對決</a></td>
+									</tr>
+									<tr>
+										<th>下午</th>
+										<td><a rel="tooltip" data-toggle="tooltip" title="小隊員們在報到、分發小隊後，就正式進入了五天四夜的物理營行程囉！屆時我們將邀請系主任為我們致詞，並說明整個營隊環境和營期間該注意的事項。">始業式</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="親身操作十場精采的小實驗，貫穿物理學的各大領域，讓你了解當今物理學最新的發展。">跑台實驗</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="親身操作十場精采的小實驗，貫穿物理學的各大領域，讓你了解當今物理學最新的發展。">跑台實驗</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="從設計、採買、製作，和組員們一起腦力激盪，建造屬於自己小隊的設備，解決任務！">趣味實驗</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="進入整個物理營的尾聲，將頒發證書與獎勵品，鼓勵大家這幾天認真的參與；所有人在溫馨愉悅的氣氛下踏上歸途，期待下次再相會。">結業式</a></td>
+									</tr>
+									<tr>
+										<th>晚上</th>
+										<td><a rel="tooltip" data-toggle="tooltip" title="RPG即角色扮演遊戲，由小隊員扮演的冒險隊即將出發！闖過我們精心設計的關卡，探索各角色間錯綜複雜的關係，解開謎底。">RPG跑關</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="除了有各類型歡迎學員的表演節目之外，我們也將帶領小隊員們進行大型團康，拉進彼此的距離，化解初識的羞澀。另外，為了第四天的舞會，將進行基本的交際舞教學。">迎新晚會</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="">採買道具</a></td>
+										<td><a rel="tooltip" data-toggle="tooltip" title="經過四天三夜的相處，在營期的最後一晚，我們要以歡欣鼓舞的舞會凝聚所有人的感情，在彼此心中留下一個美好的回憶。">制服晚會</a></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						
+														
+						</div>
+						<div class="col-md-6">
+							<img src="" class="img-responsive" />
 						</div>
 					</div>
 				</div>
@@ -343,12 +399,17 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				menu : '#myMenu',
-				anchors : ['cover','story','history', 'qa', 'information', 'reg', 'contact','sponser'],
+				anchors : ['cover','story','history','table', 'qa', 'information', 'reg', 'contact','sponser'],
 				navigation : true,
 				scrollOverflow : true
 			});
 		}); 
 	</script>
+	<script>
+    $(function(){
+       $('[rel="tooltip"]').tooltip();
+    });
 	
+	</script>
 </body>
 </html>
