@@ -1,3 +1,9 @@
+<style>
+	.modal .modal-body {
+    max-height: 500px;
+    overflow-y: auto;
+}
+</style>
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload=""></iframe>
 <form action="https://docs.google.com/a/phys.tw/forms/d/1tgmaEeVcKtu21xBsUObXhorwjLorLelKz9zoIFsg5Qs/formResponse" method="POST" id="ss-form" target="hidden_iframe" onsubmit="aftersubmitted(event)">
 	<ol role="list" class="ss-question-list" style="padding-left: 0">
@@ -148,7 +154,7 @@
 			<div class="controls">
 				<input id="entry_1215984263" name="entry_1215984263" type="text" placeholder="(必填欄位)" class="form-control" required="">
 				<p class="help-block">
-					請參閱對照表
+					請參閱<a href="#myModal" data-toggle="modal">對照表</a>
 				</p>
 			</div>
 		</div>
@@ -259,6 +265,26 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">營服尺寸對照表</h4>
+      </div>
+      <div class="modal-body">
+        <h4>T-shirt</h4>
+        <img src="img/cloth1.jpg" class="img-responsive"/>
+        <h4>帽T</h4>
+        <img src="img/cloth2.jpg" class="img-responsive" />
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
      function aftersubmitted(event)
      {

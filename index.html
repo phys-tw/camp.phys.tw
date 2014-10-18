@@ -86,6 +86,11 @@
 						<li data-menuanchor="table">
 							<a href="#table">營隊資訊</a>
 						</li>
+						
+						<li data-menuanchor="event">
+							<a href="#event">活動簡介</a>
+						</li>
+						
 						<li data-menuanchor="qa">
 							<a href="#qa">常見問題</a>
 						</li>
@@ -181,7 +186,9 @@
 							<h4>報名費用</h4>
 							<p>一般生：新台幣5000元整</p>
 							<p>清寒生：新台幣2500元整（需持有清寒、或中低收入戶證明）</p>
+							<!---
 							<h4>活動簡介</h4>
+							
 							<table class="table table-striped">
 								<thead>
 									<tr>
@@ -220,7 +227,7 @@
 									</tr>
 								</tbody>
 							</table>
-						
+							--->
 														
 						</div>
 						<div class="col-md-1"></div>
@@ -233,6 +240,39 @@
 					</div>
 				</div>
 			</div>
+			
+			
+			<div class="section" id="section_event">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>活動簡介</h1>
+							<h4>學術演講</h4>
+							<p>從基礎的科學研究，到生活中的科技應用，最後是對科學精神的反思。三場演講，不只學習科學新知，更是透過教授們的引導，體會科學家的精神。</p>
+							<h4>跑台實驗</h4>
+							<p>親身操作十場精采的小實驗，貫穿物理學的各大領域，讓你了解當今物理學最新的發展。</p>
+							<h4>趣味實驗</h4>
+							<p>從設計、採買、製作，和組員們一起腦力激盪，建造屬於自己小隊的設備，解決任務！</p>
+							<h4>始業式</h4>
+							<p>小隊員們在報到、分發小隊後，就正式進入了五天四夜的物理營行程囉！屆時我們將邀請系主任為我們致詞，並說明整個營隊環境和營期間該注意的事項。</p>
+							<h4>迎新晚會</h4>
+							<p>除了有各類型歡迎學員的表演節目之外，我們也將帶領小隊員們進行大型團康，拉進彼此的距離，化解初識的羞澀。另外，為了第四天的舞會，將進行基本的交際舞教學。</p>
+							<h4>RPG跑關</h4>
+							<p>RPG即角色扮演遊戲，由小隊員扮演的冒險隊即將出發！闖過我們精心設計的關卡，探索各角色間錯綜複雜的關係，解開謎底。</p>
+							<h4>3D卡牌對決</h4>
+							<p>在一場平靜似水的檯面上，背後暗藏著的竟是人心互鬥的層層詭計？本遊戲讓你身歷卡牌之境，要如何自保、窺伺、偵查？全靠你與生俱來的智慧與勇氣！</p>
+							<h4>尋寶遊戲</h4>
+							<p>藏著消失密室的是古老的公廁，藏著消失祕寶的又是？你願意為了得到它而付出腦力、體力和所有氣力嗎？祕寶就在那，想要它就自己去尋找吧！</p>
+							<h4>制服晚會</h4>
+							<p>經過四天三夜的相處，在營期的最後一晚，我們要以歡欣鼓舞的舞會凝聚所有人的感情，在彼此心中留下一個美好的回憶。</p>
+							<h4>結業式</h4>
+							<p>進入整個物理營的尾聲，將頒發證書與獎勵品，鼓勵大家這幾天認真的參與；所有人在溫馨愉悅的氣氛下踏上歸途，期待下次再相會。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
 			
 			<div class="section" id="section2">
 				<div class="container">
@@ -363,9 +403,15 @@
 						</div>
 						<div class="col-xs-6" >
 							<h1>聯絡我們</h1>
+							<h4>總召 江翊</h4>
 							<p>
 								email: camp@phys.tw
 							</p>
+							<p>手機： 0983730057</p>
+							<h4>副召 許端之</h4>
+							<p>手機： 0987832702</p>
+							<h4>副召 鍾易</h4>
+							<p>0939705375</p>
 						</div>
 					</div>
 				</div>
@@ -414,7 +460,7 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				menu : '#myMenu',
-				anchors : ['cover','story','history','table', 'qa', 'information', 'reg', 'contact','sponser'],
+				anchors : ['cover','story','history','table','event', 'qa', 'information', 'reg', 'contact','sponser'],
 				navigation : true,
 				scrollOverflow : true
 			});
