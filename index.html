@@ -96,9 +96,10 @@
 						<li data-menuanchor="qa">
 							<a href="#qa">常見問題</a>
 						</li>
+						<!--
 						<li data-menuanchor="information">
 							<a href="#information">匯款資訊</a>
-						</li>
+						</li>-->
 						<li data-menuanchor="reg">
 							<a href="#reg">報名專區</a>
 						</li>
@@ -167,7 +168,7 @@
 						<div class="col-md-6">
 							<h1>營隊簡史</h1>
 							<p>台大物理營是台大物理系學生會於每年寒假時會例行舉辦之冬令營隊活動，自民國八十七年首辦以來，至今已經歷過許多的年頭。</p>
-							<p>「物理」W這門科學，對於高中生來說常建立於其眾多的公式與繁雜的計算，殊不知物理的內涵，遠非一般高中教育所能述盡。我們將透過精心規劃的活動、豐富生動的演講、新奇趣味的實驗、深度的實驗室參觀等，引領學生揭開物理神秘的面紗，體會科學之美，並在單調的高中生活之餘放鬆心情、展現自我、增進人際關係。</p>
+							<p>「物理」這門科學，對於高中生來說常建立於其眾多的公式與繁雜的計算，殊不知物理的內涵，遠非一般高中教育所能述盡。我們將透過精心規劃的活動、豐富生動的演講、新奇趣味的實驗、深度的實驗室參觀等，引領學生揭開物理神秘的面紗，體會科學之美，並在單調的高中生活之餘放鬆心情、展現自我、增進人際關係。</p>
 							<p>在歷屆的台大物理營中，我們成功地向高中生介紹現今物理各領域的蓬勃發展，展現物理學的實際應用面，並藉此讓學生重新認識自我。我們的努力成效卓著，台大物理營在全國高中生中已成為口耳相傳的熱門營隊。</p>
 						</div>
 						<div class="col-md-6">
@@ -379,7 +380,7 @@
 					</div>
 				</div>
 			</div>
-			
+			<!--
 			<div class="section" id="section3">
 				<div class="container">
 					<div class="row">
@@ -393,7 +394,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>-->
 			
 			<div class="section" id="section4">
 				<div class="container" style="position: relative">
@@ -435,9 +436,9 @@
 								email: camp@phys.tw
 							</p>
 							<br />
-							<p>總召  江翊      0983730057</p>
+							<p>總召  江&nbsp;&nbsp;&nbsp;&nbsp;翊 0983730057</p>
 							<p>副召  許端之 0987832702</p>
-							<p>副召  鍾易      0939705375</p>
+							<p>副召  鍾&nbsp;&nbsp;&nbsp;&nbsp;易 0939705375</p>
 
 						</div>
 					</div>
@@ -487,7 +488,8 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				menu : '#myMenu',
-				anchors : ['cover','story','history','table','event', 'qa', 'information', 'reg', 'contact','sponser'],
+				//anchors : ['cover','story','history','table','event', 'qa', 'information', 'reg', 'contact','sponser'],
+				anchors : ['cover','story','history','table','event', 'qa',  'reg', 'contact','sponser'],
 				navigation : true,
 				scrollOverflow : true
 			});
