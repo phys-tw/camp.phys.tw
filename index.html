@@ -11,7 +11,7 @@
 		<meta name="description" content="2015 台大物理營 Final Theory">
 		<meta name="author" content="Chung-You Shih">
 
-		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Replace favicon.ico & apple-touch-icon.jpg in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico">
@@ -22,6 +22,8 @@
     	<link rel="stylesheet" href="css/jquery.fullPage.css">
     	<link href="css/style3.css" rel="stylesheet" />
     	<link href="css/style_common.css" rel="stylesheet" />
+        <link href="css/bootstrap-social.css" rel="stylesheet" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     	<style>
     		body
     		{
@@ -57,6 +59,7 @@
     		}
     		
     	</style>
+    	
     	
 	</head>
 
@@ -96,12 +99,12 @@
 						<li data-menuanchor="qa">
 							<a href="#qa">常見問題</a>
 						</li>
-						<!--
+					
 						<li data-menuanchor="information">
 							<a href="#information">匯款資訊</a>
-						</li>-->
+						</li>
 						<li data-menuanchor="reg">
-							<a href="#reg">報名專區</a>
+							<a href="#reg">錄取名單</a>
 						</li>
 						<li data-menuanchor="contact">
 							<a href="#contact">聯絡我們</a>
@@ -110,7 +113,13 @@
 							<a href="#sponser">贊助廠商</a>
 						</li>
 					</ul>
-
+                
+                    <div class="navbar-right navbar-form">
+                        <a class="btn btn-block btn-social btn-facebook" href="https://www.facebook.com/2015NTUphys" >
+                            <i class="fa fa-facebook"></i>
+                            粉絲專頁 
+                        </a>
+                    </div>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
@@ -380,7 +389,7 @@
 					</div>
 				</div>
 			</div>
-			<!--
+			
 			<div class="section" id="section3">
 				<div class="container">
 					<div class="row">
@@ -389,12 +398,42 @@
 						</div>
 						<div class="col-xs-6">
 							<h1>匯款資訊</h1>
-							<br />
-							<p>在報名截止後，會公佈匯款資訊。</p>
+							<h3>匯款期限</h3>
+							<p >2014/12/21(日)晚上六點整。(以繳費時間為準)</p>
+							<b style="color:#FF007C">注意：若未如期完成繳費，本營隊將會取消您的錄取資格。</b>
+							<h3>指定匯款帳戶</h3>
+							<p>郵局代號：700(台大郵局)</p>
+							<p>匯款戶名：國立臺灣大學物理學系學生會鍾易</p>
+							<p>匯款帳號：0001236 0523054</p>
+							<p>報名費：新臺幣五千元整（清寒生補助，新台幣兩千五百元整）</p>
+							<h3>繳費流程</h3>
+							<p>
+								<span>1. 請用以下三種方式將報名費匯款至指定匯款帳戶：</span>
+							</p>
+							<p >
+								<span> ＜方式一＞ 郵局直接轉帳</span>
+							</p>
+							<p >
+								<span> ＜方式二＞ 郵局無摺匯款</span>
+							</p>
+							<p >
+								<span> ＜方式三＞ ATM轉帳</span>
+							</p>
+							<p >
+								<span></span>
+							</p>
+							<p >
+								<span>2. 完成繳費後填寫以下表單，以方便本營隊確認繳費： </span>
+							</p>
+							<a href="https://docs.google.com/forms/d/1ZO9Vbh4E_0XnSoEztaUAtCO6S1-XCR8sVa5-H352KNs/viewform?usp=send_form"> 點此填寫確認繳費表單</a>
+							<p>
+								3. 若需申請清寒生補助，請將相關證明文件掃描/拍照，並Email至營隊信箱(camp@phys.tw)。
+							</p>
+							<!--<a href="#myModal2" data-toggle="modal">點此查看繳費流程</a>-->
 						</div>
 					</div>
 				</div>
-			</div>-->
+			</div>
 			
 			<div class="section" id="section4">
 				<div class="container" style="position: relative">
@@ -402,14 +441,166 @@
 						<div class="col-xs-6">
 						    <br />
 						    <br />
-							<h1>報名專區</h1>
-		                     <p>若報名頁面無法正常顯示 <a href="reg.html" target="_blank">按此彈出視窗</a></p>
-							 <div id="includedContent"></div>
-							 <br />
-							 <br />
-							 <br />
-							 <br />
-							 <br />
+							<h1>錄取名單</h1>
+							<div style="overflow: auto; height: 500px">
+							<table class="table table-striped">
+								<tbody>
+									<tr>
+										<td>1</td><td>林易瑩</td><td>女</td><td>北一女中</td><td>1</td><td>李祥豪</td><td>男</td><td>二信高中</td>
+									</tr>
+									<tr>
+										<td>1</td><td>林詩軒</td><td>女</td><td>桃園高中</td><td>1</td><td>林義傑</td><td>男</td><td>花蓮高中</td>
+									</tr>
+									<tr>
+										<td>1</td><td>郭玉玟</td><td>女</td><td>新莊高中</td><td>1</td><td>張智傑</td><td>男</td><td>和平高中</td>
+									</tr>
+									<tr>
+										<td>1</td><td>葉尹柔</td><td>女</td><td>台南女中</td><td>1</td><td>陳俠語</td><td>男</td><td>衛道中學</td>
+									</tr>
+									<tr>
+										<td>1</td><td>謝怡萱</td><td>女</td><td>明道中學</td><td>1</td><td>陳麒瑞</td><td>男</td><td>建國中學</td>
+									</tr>
+									<tr>
+										<td>2</td><td>游雯琪</td><td>女</td><td>竹林中學</td><td>2</td><td>呂宜駿</td><td>男</td><td>台南一中</td>
+									</tr>
+									<tr>
+										<td>2</td><td>黃倢恩</td><td>女</td><td>再興中學</td><td>2</td><td>黃柏杰</td><td>男</td><td>衛道高中</td>
+									</tr>
+									<tr>
+										<td>2</td><td>黃愉涵</td><td>女</td><td>彰化女中</td><td>2</td><td>郭景矞</td><td>男</td><td>建國中學</td>
+									</tr>
+									<tr>
+										<td>2</td><td>蘇怡禎</td><td>女</td><td>台中女中</td><td>2</td><td>曾峻葦</td><td>男</td><td>桃園高中</td>
+									</tr>
+									<tr>
+										<td>2</td><td>羅顥瑄</td><td>女</td><td>新竹女中</td><td>2</td><td>謝靖惟</td><td>男</td><td>延平中學</td>
+									</tr>
+									<tr>
+										<td>3</td><td>陳宣蓉</td><td>女</td><td>武陵高中</td><td>3</td><td>方昱崴</td><td>男</td><td>南湖高中</td>
+									</tr>
+									<tr>
+										<td>3</td><td>陳潤儀</td><td>女</td><td>北一女中</td><td>3</td><td>易建宏</td><td>男</td><td>文興高中</td>
+									</tr>
+									<tr>
+										<td>3</td><td>馮子瑄</td><td>女</td><td>新竹實中</td><td>3</td><td>許正航</td><td>男</td><td>建國中學</td>
+									</tr>
+									<tr>
+										<td>3</td><td>黃心蕙</td><td>女</td><td>高雄女中</td><td>3</td><td>黃煒竣</td><td>男</td><td>鳳山高中</td>
+									</tr>
+									<tr>
+										<td>3</td><td>詹雅倫</td><td>女</td><td>苑裡高中</td><td>3</td><td>薛駿勝</td><td>男</td><td>建國中學</td>
+									</tr>
+									<tr>
+										<td>4</td><td>李佳忞</td><td>女</td><td>北一女中</td><td>4</td><td>楊容</td><td>男</td><td>桃園高中</td>
+									</tr>
+									<tr>
+										<td>4</td><td>楊靜璇</td><td>女</td><td>延平中學</td><td>4</td><td>徐渙軒</td><td>男</td><td>西松高中</td>
+									</tr>
+									<tr>
+										<td>4</td><td>陳怡雯</td><td>女</td><td>昆山台商子女學校</td><td>4</td><td>楊承祐</td><td>男</td><td>弘文高中</td>
+									</tr>
+									<tr>
+										<td>4</td><td>潘怡汝</td><td>女</td><td>屏東女中</td><td>4</td><td>歐智行</td><td>男</td><td>台中一中</td>
+									</tr>
+									<tr>
+										<td>4</td><td>蔡沁靈</td><td>女</td><td>武陵高中</td><td>4</td><td>鍾淳文</td><td>男</td><td>新竹高中</td>
+									</tr>
+									<tr>
+										<td>5</td><td>王嵐</td><td>女</td><td>北一女中</td><td>5</td><td>洪瑋澤</td><td>男</td><td>台中一中</td>
+									</tr>
+									<tr>
+										<td>5</td><td>吳沛宸</td><td>女</td><td>道明中學</td><td>5</td><td>張偉治</td><td>男</td><td>彰化高中</td>
+									</tr>
+									<tr>
+										<td>5</td><td>林珈卉</td><td>女</td><td>高雄女中</td><td>5</td><td>郭繼陽</td><td>男</td><td>高雄中學</td>
+									</tr>
+									<tr>
+										<td>5</td><td>林庭安</td><td>女</td><td>中山女高</td><td>5</td><td>管浩翔</td><td>男</td><td>桃園高中</td>
+									</tr>
+									<tr>
+										<td>5</td><td>許珩琦</td><td>女</td><td>竹北高中</td><td>5</td><td>盧柏璋</td><td>男</td><td>建國中學</td>
+									</tr>
+									<tr>
+										<td>6</td><td>王亭筑</td><td>女</td><td>中山女高</td><td>6</td><td>吳宗哲</td><td>男</td><td>中壢高中</td>
+									</tr>
+									<tr>
+										<td>6</td><td>陳緻庭</td><td>女</td><td>北一女中</td><td>6</td><td>吳昇峻</td><td>男</td><td>高雄中學</td>
+									</tr>
+									<tr>
+										<td>6</td><td>詹絜茵</td><td>女</td><td>臺中女中</td><td>6</td><td>張超凱</td><td>男</td><td>時雨中學</td>
+									</tr>
+									<tr>
+										<td>6</td><td>劉怡君</td><td>女</td><td>德光高中</td><td>6</td><td>陳禹丞</td><td>男</td><td>建國中學</td>
+									</tr>
+									<tr>
+										<td>6</td><td>嚴翊心</td><td>女</td><td>曉明女中</td><td>6</td><td>葉克桓</td><td>男</td><td>武陵高中</td>
+									</tr>
+									<tr>
+										<td>7</td><td>劉怡萱</td><td>女</td><td>武陵高中</td><td>7</td><td>江振豪</td><td>男</td><td>台南一中</td>
+									</tr>
+									<tr>
+										<td>7</td><td>侯祈甄</td><td>女</td><td>台南女中</td><td>7</td><td>林祉均</td><td>男</td><td>台中一中</td>
+									</tr>
+									<tr>
+										<td>7</td><td>洪瑜翎</td><td>女</td><td>花蓮女中</td><td>7</td><td>陳柏翰</td><td>男</td><td>建國中學</td>
+									</tr>
+									<tr>
+										<td>7</td><td>陳蔚瑩</td><td>女</td><td>精誠中學</td><td>7</td><td>陳韋翰</td><td>男</td><td>延平中學</td>
+									</tr>
+									<tr>
+										<td>7</td><td>游家毓</td><td>女</td><td>聖心女中</td><td>7</td><td>鄭宇翔</td><td>男</td><td>師大附中</td>
+									</tr>
+									<tr>
+										<td>8</td><td>周歆晏</td><td>女</td><td>武陵高中</td><td>8</td><td>巫紹圻</td><td>男</td><td>花蓮高中</td>
+									</tr>
+									<tr>
+										<td>8</td><td>曾子芯</td><td>女</td><td>黎明高中</td><td>8</td><td>林彥興</td><td>男</td><td>新竹高中</td>
+									</tr>
+									<tr>
+										<td>8</td><td>鄒姿萱</td><td>女</td><td>興大附中</td><td>8</td><td>黃宣銘</td><td>男</td><td>延平中學</td>
+									</tr>
+									<tr>
+										<td>8</td><td>鄭筱穎</td><td>女</td><td>華興中學</td><td>8</td><td>詹育誠</td><td>男</td><td>新北高中</td>
+									</tr>
+									<tr>
+										<td>8</td><td>謝佳璇</td><td>女</td><td>正心高中</td><td>8</td><td>蘇元浚</td><td>男</td><td>臺南一中</td>
+									</tr>
+									<tr>
+										<td>9</td><td>李潔宜</td><td>女</td><td>曉明女中</td><td>9</td><td>朱軒霆</td><td>男</td><td>道明中學</td>
+									</tr>
+									<tr>
+										<td>9</td><td>康纈</td><td>女</td><td>新竹女中</td><td>9</td><td>林沛衡</td><td>男</td><td>長榮中學</td>
+									</tr>
+									<tr>
+										<td>9</td><td>梁靖妮</td><td>女</td><td>北一女中</td><td>9</td><td>許志勤</td><td>男</td><td>衛道中學</td>
+									</tr>
+									<tr>
+										<td>9</td><td>黃子蘋</td><td>女</td><td>武陵高中</td><td>9</td><td>陳皇翰</td><td>男</td><td>成功高中</td>
+									</tr>
+									<tr>
+										<td>9</td><td>楊淑晴</td><td>女</td><td>文興高中</td><td>9</td><td>鄭瑞霖</td><td>男</td><td>溪湖高中</td>
+									</tr>
+									<tr>
+										<td>10</td><td>阮麟琹</td><td>女</td><td>高雄女中</td><td>10</td><td>杜奕徵</td><td>男</td><td>中壢高中</td>
+									</tr>
+									<tr>
+										<td>10</td><td>林宜蓁</td><td>女</td><td>竹圍高中</td><td>10</td><td>林文約</td><td>男</td><td>成功高中</td>
+									</tr>
+									<tr>
+										<td>10</td><td>林緯瑋</td><td>女</td><td>延平中學</td><td>10</td><td>劉重鑫</td><td>男</td><td>松山高中</td>
+									</tr>
+									<tr>
+										<td>10</td><td>張家芸</td><td>女</td><td>桃園高中</td><td>10</td><td>蔡明洋</td><td>男</td><td>內湖高中</td>
+									</tr>
+									<tr>
+										<td>10</td><td>曾玟綺</td><td>女</td><td>花蓮女中</td><td>10</td><td>郭學源</td><td>男</td><td>正心中學</td>
+									</tr>
+									<tr>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
 						</div>
 						<div class="col-md-6">
 							<br />
@@ -458,14 +649,61 @@
 								<a href="http://www.phys.tw" target="_blank" class="info">phys.tw</a>
 							</div>
 						</div>
-						
-						
 					</div>
 				</div>
 			</div>
 
 		</div>
 		
+<!-- Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">錄取名單</h4>
+      </div>
+      <div class="modal-body">
+      	<p>確認繳費後我們會以Email通知，並直接在名字後標註Ｏ</p>
+      	<iframe width="100%" height="500" src="https://docs.google.com/spreadsheets/d/1FvZrXxVSkMfCvo0XKjFb7mOLEIljjRWg0qXgDYUFZks/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+      </div>
+    </div>
+  </div>
+</div>		
+<div class="modal fade" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">繳費流程</h4>
+      </div>
+		<div class="modal-body">
+						<p>
+							<span>1. 請用以下三種方式將報名費匯款至指定匯款帳戶：</span>
+						</p>
+						<p >
+							<span> ＜方式一＞ 郵局直接轉帳</span>
+						</p>
+						<p >
+							<span> ＜方式二＞ 郵局無摺匯款</span>
+						</p>
+						<p >
+							<span> ＜方式三＞ ATM轉帳</span>
+						</p>
+						<p >
+							<span></span>
+						</p>
+						<p >
+							<span>2. 完成繳費後填寫以下表單，以方便本營隊確認繳費： </span>
+						</p>
+						<a href="https://docs.google.com/forms/d/1tgmaEeVcKtu21xBsUObXhorwjLorLelKz9zoIFsg5Qs/viewform?usp=send_form"> 點此填寫確認繳費表單</a>
+						<p>
+							3. 若需申請清寒生補助，請將相關證明文件掃描/拍照，並Email至營隊信箱(camp@phys.tw)。
+						</p>
+					</div>
+    </div>
+  </div>
+</div>	
 		
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -473,13 +711,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+    <script>
+		$(function() {
+			$("#includedList").load("https://docs.google.com/spreadsheets/d/1FvZrXxVSkMfCvo0XKjFb7mOLEIljjRWg0qXgDYUFZks/pubhtml?gid=0&single=true");
+		});
+	</script>
+    <!--
     <script>
 		$(function() {
 			$("#includedContent").load("reg_core.html");
 		});
 	</script>
-    
+    -->
     <!-- This following line is needed in case of using the default easing option or when using another
  one rather than "linear" or "swing". You can also add the full jQuery UI instead of this file if you prefer -->
 	<script src="js/vendors/jquery.slimscroll.min.js"></script>
@@ -488,8 +731,8 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				menu : '#myMenu',
-				//anchors : ['cover','story','history','table','event', 'qa', 'information', 'reg', 'contact','sponser'],
-				anchors : ['cover','story','history','table','event', 'qa',  'reg', 'contact','sponser'],
+				anchors : ['cover','story','history','table','event', 'qa', 'information', 'reg', 'contact','sponser'],
+				//anchors : ['cover','story','history','table','event', 'qa',  'reg', 'contact','sponser'],
 				navigation : true,
 				scrollOverflow : true
 			});
@@ -508,6 +751,7 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-53107653-2', 'auto');
+  ga('require', 'displayfeatures');
   ga('send', 'pageview');
 
 	</script>
