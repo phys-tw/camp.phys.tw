@@ -85,6 +85,9 @@
 						<li data-menuanchor="story">
 							<a href="#story">營隊故事</a>
 						</li>
+						<li data-menuanchor="story">
+							<a href="#movie">前導影片</a>
+						</li>
 						<li data-menuanchor="history">
 							<a href="#history">營隊簡史</a>
 						</li>
@@ -168,6 +171,10 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			
+			<div class="section" id="section_movie">
+				<iframe width="100%" height="100%" src="//www.youtube.com/embed/gmZPI3WxwBg" frameborder="0" allowfullscreen></iframe>
 			</div>
 			
 			
@@ -728,7 +735,7 @@
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
 				menu : '#myMenu',
-				anchors : ['cover','story','history','table','event', 'qa', 'information', 'reg', 'contact','sponser'],
+				anchors : ['cover','story','movie','history','table','event', 'qa', 'information', 'reg', 'contact','sponser'],
 				//anchors : ['cover','story','history','table','event', 'qa',  'reg', 'contact','sponser'],
 				navigation : true,
 				scrollOverflow : true
