@@ -445,10 +445,10 @@
 								<span>2. 若您已成功錄取，請用以下三種方式將報名費匯款至指定匯款帳戶：</span>
 							</p>
 							<p >
-								<span> ＜方式一＞ 郵局直接轉帳</span>
+								<span> ＜方式一＞ 郵局直接轉帳(至郵局臨櫃填寫「郵政國內匯款單」)</span>
 							</p>
 							<p >
-								<span> ＜方式二＞ 郵局無摺匯款</span>
+								<span> ＜方式二＞ 郵局無摺存款(至郵局臨櫃填寫「郵政存簿儲金無摺存款存款單」)</span>
 							</p>
 							<p >
 								<span> ＜方式三＞ ATM轉帳</span>
@@ -518,10 +518,10 @@
 										<td>5</td><td>游子瑗</td><td>女</td><td>台北市北一女中</td><td></td><td>譚皓澤</td><td>男</td><td>台北市再興高中</td>
 									</tr>
 									<tr>
-										<td>6</td><td>王資涵</td><td>女</td><td>台北市再興高中</td><td></td><td>陳則明</td><td>男</td><td>台北市成功高中</td>
+										<td>6</td><td>李嘉芸</td><td>女</td><td>台北市北一女中</td><td></td><td>陳則明</td><td>男</td><td>台北市成功高中</td>
 									</tr>
 									<tr>
-										<td>7</td><td>黃鈺鈞</td><td>女</td><td>台南市德光高中</td><td></td><td>陳庭賢</td><td>男</td><td>台北市東山高中</td>
+										<td>7</td><td>王資涵</td><td>女</td><td>台北市再興高中</td><td></td><td>陳庭賢</td><td>男</td><td>台北市東山高中</td>
 									</tr>
 									<tr>
 										<td>8</td><td>劉怡里</td><td>女</td><td>台北市松山高中</td><td></td><td>張智堯</td><td>男</td><td>台北市復興實中</td>
@@ -647,8 +647,8 @@
 				<div class="controls">
 				<select id="entry_2104873644" name="entry_2104873644" placeholder="(必填欄位)" class="form-control" required="">
 					<option value></option>
-					<option value="郵局直接轉帳">郵局直接轉帳</option>
-					<option value="郵局無摺匯款">郵局無摺匯款</option>
+					<option value="郵局直接轉帳">郵局直接轉帳(填寫「郵政國內匯款單」)</option>
+					<option value="郵局無摺存款">郵局無摺存款(填寫「郵政存簿儲金無摺存款存款單」)</option>
 					<option value="ATM轉帳">ATM轉帳</option>
 				</select>
 				</div>
@@ -669,16 +669,17 @@
 				<div class="controls">
 				<input id="entry_1899895163" name="entry_1899895163" type="text" placeholder="(必填欄位)" class="form-control" required="">
 				</div>
-				<p class="help-block">(ATM轉帳必填)</p>
+				<p class="help-block">(ATM轉帳必填，郵局直接轉帳與無摺存款者請填"無")</p>
 				<p class="help-block">&nbsp;</p>
 			</div>
 			
 			<div class="control-group">
-			<label class="control-label" for="entry_255867891">匯款郵局的局號(共6碼)</label>
+			<label class="control-label" for="entry_255867891">匯款郵局的局號(共6+1碼)</label>
 				<div class="controls">
 				<input id="entry_255867891" name="entry_255867891" type="text" placeholder="(必填欄位)" class="form-control" required="">
 				</div>
-				<p class="help-block">(無摺匯款必填)</p>
+				<p class="help-block">ex: 000123-6，標示於郵局確認章上(注意！不是表格欄位中的郵局局號)</p>
+				<p class="help-block">(郵局轉帳與無摺存款必填，ATM轉帳請填"無")</p>
 				<p class="help-block">&nbsp;</p>
 			</div>
 			
