@@ -94,23 +94,25 @@
 						<li data-menuanchor="List">
 							<a href="#List">錄取名單</a>
 						</li>
+						<!--
 						<li data-menuanchor="Payment">
 							<a href="#Payment">匯款資訊</a>
 						</li>
+						-->
 						<li data-menuanchor="qa">
 							<a href="#qa">常見問題</a>
 						</li>
 						<li data-menuanchor="event">
 							<a href="#event">活動簡介</a>
 						</li>
-						<!---
+						<!--
 						<li data-menuanchor="reg">
 							<a href="#reg">錄取名單</a>
 						</li>
 						<li data-menuanchor="information">
 							<a href="#information">行前通知</a>
 						</li>
-						--->
+						-->
 						<li data-menuanchor="contact">
 							<a href="#contact">聯絡我們</a>
 						</li>
@@ -256,21 +258,19 @@
 				<div class="container">
 					<div class="row">
 						<h2>錄取名單</h2>
-						<b style="color:#FF007C">錄取名單已出來了囉，快來看看自己有沒有錄取吧~。(包含正取 & 備取)</b><br />
+						<b style="color:#FF007C">最終錄取名單已出來了囉，快來看看自己在哪個小隊吧~！</b><br />
 						<div>
 							<iframe width="95%" height="440" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQvDX0bCsX8gRiS9IkluRsCAql6ASeePsgi6vWsiDHgwPyKi-Fq52mp6uxIAjiqxKqR-sDY1qdTIfqB/pubhtml?widget=true&amp;headers=false"></iframe>
 						</div>
 						<div>
 							<br />
-							<h4>若您是正取學員或是備取學員，請特別注意以下訊息。</h4>
-							<h4>正取學員</h4>
-							<p>繳費繳費時間已經結束囉~~~。</p>
-							<h4>備取學員</h4>
-							<p>若有缺額會依順位依序遞補，備取已經開始電話通知，敬請等候佳音。請收到電話的學員，依下頁方法繳費</p>
+							<p>若您是錄取學員，最新的行前通知會在下周陸續開始～期待在寒假見到大家！</p>
+							<p><span style = "color: #ff0000">請注意</span>：由於備取已經全面結束，本營隊不再受理退款事宜。如有造成不便，敬請見諒。</p>
 						</div>
 					</div>
 				</div>
 			</div>
+			<!--
 			<div class="section" id="section_Payment">
 				<div class="container">
 					<div class="row">
@@ -303,6 +303,7 @@
 					</div>
 				</div>
 			</div>
+			-->
 			<div class="section" id="section_qa">
 				<div class="container">
 					<div class="row">	
@@ -597,7 +598,7 @@
 			$(document).ready(function() {
 				$('#fullpage').fullpage({
 					menu : '#myMenu',
-					anchors : ['cover','story','history','table', 'List', 'Payment', 'qa','event', 'contact'],
+					anchors : ['cover','story','history','table', 'List', 'qa','event', 'contact'],
 					<!-- nav 滾動的排序-->
 					navigation : true,
 					scrollOverflow : true
