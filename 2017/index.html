@@ -94,6 +94,9 @@
 						<li data-menuanchor="List">
 							<a href="#List">錄取名單</a>
 						</li>
+						<li data-menuanchor="information">
+							<a href="#information">行前通知</a>
+						</li>
 						<!--
 						<li data-menuanchor="Payment">
 							<a href="#Payment">匯款資訊</a>
@@ -110,9 +113,6 @@
 							<a href="#reg">錄取名單</a>
 						</li>
 						-->
-						<li data-menuanchor="information">
-							<a href="#information">行前通知</a>
-						</li>
 						<li data-menuanchor="contact">
 							<a href="#contact">聯絡我們</a>
 						</li>
@@ -266,6 +266,28 @@
 							<br />
 							<p>若您是錄取學員，最新的行前通知會在下周陸續開始～期待在寒假見到大家！</p>
 							<p><span style = "color: #ff0000">請注意</span>：由於備取已經全面結束，本營隊不再受理退款事宜。如有造成不便，敬請見諒。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" id="information">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<h2>行前通知</h2>
+							<br/>
+							<p>各位小隊員大家好，</p>
+							<p>距離上營只剩下一個月了，以下檔案中內含重要事項，請務必仔細閱讀過！</p>
+							<p>近期內隊輔會用電話和各位進行聯絡，請大家在電話中告知隊輔自己的集合地點。</p>
+							<p>如果有任何問題，歡迎也直接詢問隊輔喔！</p>
+							<br/>
+							<p><span>※&nbsp;<a href="https://drive.google.com/file/d/0B0fAksbUlEYNd21BaFBzRnplWjQ/view?usp=sharing" target="_blank">2017台大物理營_行前通知</a></span></p>
+							<p><span>※&nbsp;<a href="https://drive.google.com/file/d/0B0fAksbUlEYNeVVfUTRveW0yU1U/view?usp=sharing" target="_blank">2017台大物理營_家長同意書</a></span></p>
+							<br/>
+							<p><b style="color:#FF007C">＊家長同意書請列印並填妥後，在1 / 21(六)報到時交回。</b></p>
+						</div>
+						<div class="col-sm-6">
+							<img src="img/img_2.jpg" class="img-responsive"/ height="auto" width="auto">
 						</div>
 					</div>
 				</div>
@@ -444,28 +466,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="section" id="information">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6">
-							<h2>行前通知</h2>
-							<br/>
-							<p>各位小隊員大家好，</p>
-							<p>距離上營只剩下一個月了，以下檔案中內含重要事項，請務必仔細閱讀過！</p>
-							<p>近期內隊輔會用電話和各位進行聯絡，請大家在電話中告知隊輔自己的集合地點。</p>
-							<p>如果有任何問題，歡迎也直接詢問隊輔喔！</p>
-							<br/>
-							<p><span>※&nbsp;<a href="https://drive.google.com/file/d/0B0fAksbUlEYNd21BaFBzRnplWjQ/view?usp=sharing" target="_blank">2017台大物理營_行前通知</a></span></p>
-							<p><span>※&nbsp;<a href="https://drive.google.com/file/d/0B0fAksbUlEYNeVVfUTRveW0yU1U/view?usp=sharing" target="_blank">2017台大物理營_家長同意書</a></span></p>
-							<br/>
-							<p><b style="color:#FF007C">＊家長同意書請列印並填妥後，在1 / 21(六)報到時交回。</b></p>
-						</div>
-						<div class="col-sm-6">
-							<img src="img/img_2.jpg" class="img-responsive"/ height="auto" width="auto">
-						</div>
-					</div>
-				</div>
-			</div>
 			<!---
 			<div class="section" id="section_reg">
 				<div class="container" style="position: relative">
@@ -620,7 +620,7 @@
 			$(document).ready(function() {
 				$('#fullpage').fullpage({
 					menu : '#myMenu',
-					anchors : ['cover','story','history','table', 'List', 'qa', 'event', 'information', 'contact'],
+					anchors : ['cover','story','history','table', 'List', 'information', 'qa', 'event', 'contact'],
 					<!-- nav 滾動的排序-->
 					navigation : true,
 					scrollOverflow : true
