@@ -1,0 +1,1 @@
+Copyright <span onclick="location.href='admin.php';">By</span> B98<a href="http://www.phys.ntu.edu.tw" target="_blank">台大物理系</a>學生會 | template designed by <a href="http://www.dcarter.co.uk" target="_blank">dcarter</a> | Website constructed by <a href="mailto: b98202026@ntu.edu.tw">Mark</a>

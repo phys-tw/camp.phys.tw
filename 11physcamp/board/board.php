@@ -1,0 +1,178 @@
+<?php
+include("function.php");
+session_save_path ('../session');
+$db = sqlite_open('board_qV3j4G83Ki4.db', 0666, $errorMsg);
+//check session 
+session_start();
+$auth = ($_SESSION['auth']=="SYSOP");
+if(time()-$_SESSION['time']>1200 || $auth==false) endSession();
+else $_SESSION['time']=time();
+
+//count page and open db
+$limit = 10;
+
+$board_data = sqlite_query($db, 'SELECT postTime FROM board;');
+$ttl_pages = ceil(sqlite_num_rows($board_data)/$limit);
+
+if($ttl_pages==0)$ttl_pages=1;
+$page = floor($_GET['page']);
+if($page<1) $page = 1;
+elseif ($page>$ttl_pages) $page = $ttl_pages;
+
+//delete message
+if($_GET['delete']=="1" and $auth){
+	$query = 'DELETE FROM board WHERE (postTime==' . $_GET['time'] . ');';
+	if(sqlite_query($db, $query))
+		echo "<script>window.location.href='board.php?page=" . $page . "';</script>";
+	else echo "刪除失敗！";
+}
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-TW">
+
+<head>
+  <meta name="google-site-verification" content="4MVHMfil4n3_K2IAMAvPMe9RfWroffKjmGr3lknaDdQ" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="zh-TW" />
+  <meta name="keywords" content="台大物理系,台大物理營,物理營,寒假營隊,物理,Physics,Camp,NTU">
+  <title>2011 台大物理營 Knock!Knock!</title>
+  <meta name="description" content="website description" />
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="thickbox.js"></script>
+  <link rel="stylesheet" href="../thickbox.css" type="text/css" media="screen" /> 
+  <link rel="stylesheet" type="text/css" href="../style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <h1><span class="green">2011 台大物理營</span><br/>Knock! Knock!</h1>
+        </div>
+        <div id="menubar">
+          <ul id="menu">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="p2_history.html">營隊簡史</a></li>
+            <li><a href="p3_info.html">活動資訊</a></li>
+            <li><a href="p4_signup.html">報名專區</a></li>
+            <li><a href="p5_faq.html">常見問題</a></li>
+            <li class="tab_selected"><a href="board/board.php">留言板</a></li>
+		    <li><a class="last" href="p6_contact.html">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div id="column1">
+        <div class="sidebaritem">
+          <!-- **** INSERT NEWS ITEMS HERE **** -->
+          <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <p><a href="image/poster_2011.jpg" title="2011 台大物理營 Knock!Knock 營隊海報" class="thickbox"><img src="image/poster_s.jpg" alt="營隊海報縮圖" /></a></p>
+        <h1>最新動態</h1>
+        <h2>2010/10/27</h2>
+      網站製作開始<br/>
+       <br/>
+       <h2>2010/11/02</h2>
+      網站正式上線
+      </div>
+      <div id="content">
+    <h1>留言板</h1>
+
+<p><a href="board_write.php"><font size=3 color="#CD6600">我要留言</font></a></p>
+
+<table width="500" cellspacing="0" style="border: 0px;">
+
+<tr><td align="left" style="border: 0px; font-size: 80%;">
+<?php
+echo '您目前在第&nbsp;' . $page . '&nbsp;頁，共&nbsp;' . $ttl_pages . '&nbsp;頁</td><td align="right"  style="border: 0px; font-size: 80%;" >';
+if ($page == 1 and $ttl_pages == 1)
+	echo '第一頁';
+elseif ($page == 1)
+	echo '<font color="#808080">第一頁</font>　' . 
+		 '<font color="#808080">上一頁</font>　　' . 
+		 '<a href="board.php?page=2">下一頁</a>　' . 
+		 '<a href="board.php?page=' . $ttl_pages . '">最末頁</a>';
+elseif ($page == $ttl_pages)
+	echo '<a href="board.php?page=1">第一頁</a>　' . 
+		 '<a href="board.php?page=' . ($page-1) . '">上一頁</a>　　' . 
+		 '<font color="#808080">下一頁</font>　' . 
+		 '<font color="#808080">最末頁</font>';
+else
+	echo '<a href="board.php?page=1">第一頁</a>　' . 
+		 '<a href="board.php?page=' . ($page-1) . '">上一頁</a>　　' . 
+		 '<a href="board.php?page=' . ($page+1) . '">下一頁</a>　' . 
+		 '<a href="board.php?page=' . $ttl_pages . '">最末頁</a>';
+?>
+</td></tr>
+
+<tr><td colspan="2" style="border: 0px;">
+
+<?php
+
+$query = 'SELECT * FROM board ORDER BY postTime DESC LIMIT ' . $limit . ' OFFSET ' . (($page-1)*$limit);
+$board_data = sqlite_query($db, $query);
+$master = '<font color="#495845"><b>物理營幹部</b></font>';
+
+while ($row = sqlite_fetch_array($board_data)){
+    
+	echo "<hr><p class='boardsmall'><u>" . ($row['master']=="1"? $master:preedit(htmlspecialchars($row['name'],ENT_NOQUOTES,"UTF-8"))) . "&nbsp;說：</u></p>";
+    
+    echo "<p>" . preedit($row['message']) . "</p>";
+    
+    echo "<p class='boardsmall'><i>" . date('Y/m/d H:i:s', $row['postTime']) . "</i>";
+    if($auth) echo "　　<a href='board.php?page=$page&delete=1&time=" . $row['postTime'] . "' onclick='return window.confirm(\"確認刪除此篇留言者為" . preedit($row['name']) . "之留言？\\n此動作無法復原！ \");'>刪除</a>　　<a href='board_write.php?time=" . $row['postTime'] . "'>回覆</a>　　IP = " . $row['ip']; 
+    echo  "</p>";
+    
+    if ($row['reply']!=""){
+        echo "<blockquote><p class='boardsmall'><u>" . $master . "&nbsp;回覆：</u></p>";
+        echo "<p>" . preedit($row['reply']) . "</p>";
+        echo "<p class='boardsmall'><i>" . date('Y/m/d H:i:s', $row['replytime']) . "</i></p></blockquote>";
+    }
+
+}
+
+sqlite_close($db);
+
+?>
+
+</td></tr>
+
+<tr><td colspan="2" style="border: 0px;"><hr></td></tr>
+
+<tr><td align="left" style="border: 0px; font-size: 80%;">
+<?php
+echo '您目前在第&nbsp;' . $page . '&nbsp;頁，共&nbsp;' . $ttl_pages . '&nbsp;頁</td><td align="right" style="border: 0px; font-size: 80%;">';
+if ($page == 1 and $ttl_pages == 1)
+	echo '第一頁';
+elseif ($page == 1)
+	echo '<font color="#808080">第一頁</font>　' . 
+		 '<font color="#808080">上一頁</font>　　' . 
+		 '<a href="board.php?page=2">下一頁</a>　' . 
+		 '<a href="board.php?page=' . $ttl_pages . '">最末頁</a>';
+elseif ($page == $ttl_pages)
+	echo '<a href="board.php?page=1">第一頁</a>　' . 
+		 '<a href="board.php?page=' . ($page-1) . '">上一頁</a>　　' . 
+		 '<font color="#808080">下一頁</font>　' . 
+		 '<font color="#808080">最末頁</font>';
+else
+	echo '<a href="board.php?page=1">第一頁</a>　' . 
+		 '<a href="board.php?page=' . ($page-1) . '">上一頁</a>　　' . 
+		 '<a href="board.php?page=' . ($page+1) . '">下一頁</a>　' . 
+		 '<a href="board.php?page=' . $ttl_pages . '">最末頁</a>';
+?>
+</td></tr>
+
+</table>
+      </div>
+</div>
+     <div id="footer">
+    Copyright &copy; </span>B97<a href="http://www.phys.ntu.edu.tw" target="_blank">台大物理系</a>學生會 | template designed by <a href="http://www.dcarter.co.uk" target="_blank">dcarter</a> | best view in <a href="http://www.google.com/chrome" target="_blank">Google Chrome</div>
+  </div>
+  </div>
+</body>
+</html>

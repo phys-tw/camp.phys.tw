@@ -1,0 +1,262 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+body {
+	color: #47433F;
+	font-family: arial, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	width:100%;
+}
+a { 
+    outline: none;
+    text-decoration: underline;
+    color: #000080;/*#A4AA04;*/
+}
+a:hover {
+    text-decoration: none;
+}
+#main {
+    width:100%;
+    background:url(../image/DSC0474711.JPG);
+    vertical-align: text-top;
+}
+
+#header  {
+    width:270px;
+    background: black;
+    /*border-bottom:5px solid #A4AA04;*/
+    float:left;
+    height:100%;
+}
+#header_logo {
+}
+
+#logo {
+    font: normal ,arial, sans-serif;
+    font-size:42px;
+    padding: 45px 0px 10px 20px;
+    color: #FFFFFF;
+}
+
+#menubar {
+    float:right;
+    padding:20px 0px 0px 0px;
+} 
+#menubar ul {
+
+}
+#menubar ul li {
+    list-style: none;
+    display:block;
+    text-align:center;
+    width:100px;
+    background: url(menu.png) repeat-x;
+    padding:5px 15px 5px 15px;
+    /*border-left: 1px solid #DCE31D;
+    border-right: 1px solid #7E8204;*/
+    font-size:14px;
+}
+#menubar ul li a {
+    font: normal, arialserif;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-decoration: none;
+} 
+#menubar ul li a:hover {
+    color: #111111;
+}
+
+#site_content {
+    overflow: hidden;
+    display:inline-block;
+    float:right;
+    width:600px;
+    padding:15px;
+}
+
+.sidebar {
+    float: right;
+    width: 190px;
+    padding: 0 0px 0px 15px;
+    overflow:auto;
+}
+.sidebar h1 {
+    padding:15px 0px 5px 3px;
+    margin:0 0 10px 0;
+    font-size:24px;
+}
+.sidebar h2 {
+    margin:0 0 5px 0;
+    font-size:18px;
+    font-weight:bold;
+}
+.sidebar p {
+    padding:0;
+    text-indent:0;
+    line-height: 1.7em;
+    margin:0px 0px 10px 0px;
+}
+#content {
+    text-align: left;
+    overflow:auto;
+    height:100%;
+}
+#content h1 {
+    padding:15px 0px 5px 3px;
+    border-bottom: 1px solid gray;
+    margin:0 0 10px 0;
+    font-size:24px;
+}
+#content h2 {
+    //padding:15px 0px 5px 3px;
+    margin:0 0 5px 0;
+    font-size:18px;
+    font-weight:bold;
+}
+#content p {
+    padding:0;
+    line-height: 1.7em;
+    margin:0px 0px 10px 0px;
+}
+#content p.indent {
+    text-indent:2em;
+}
+#content ul {
+    list-style-type:circle;
+    list-style-position:outside;
+    padding:0 0 0 2em;
+}
+#content li {
+    line-height: 1.7em;
+}
+#content .highlight {
+    color:#00008b;
+    font-weight:bold;
+}
+#content a {
+    color:#8B2323;
+}
+
+
+#footer {
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 5px 0 5px 0;
+    text-align: center; 
+    background-color: #635B53;
+    color: #A8AA94;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    clear : both;
+}
+
+#footer a, #footer a:hover
+{ background: transparent;
+  color: #A8AA94;
+  text-decoration: none;}
+
+#footer a:hover
+{ background: transparent;
+  color: #FFF;}
+
+
+
+
+.form_settings
+{ margin: 15px 0 0 0;}
+
+.form_settings p
+{ padding: 0 0 4px 0;}
+
+.form_settings span
+{ float: left; 
+  width: 200px; 
+  text-align: left;}
+  
+.form_settings input, .form_settings textarea
+{ padding: 2px; 
+  width: 299px; 
+  font: 100% arial; 
+  border: 1px solid #E5E5DB; 
+  background: #FFF; 
+  color: #47433F;}
+  
+.form_settings .submit
+{ font: 100% arial; 
+  border: 1px solid; 
+  width: 99px; 
+  margin: 0 0 0 206px; 
+  height: 26px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #63574B; 
+  color: #FFF;}
+
+.form_settings textarea, .form_settings select
+{ font: 100% arial; 
+  width: 299px;}
+
+.form_settings select
+{ width: 304px;}
+
+.form_settings .checkbox
+{ margin: 4px 0; 
+  padding: 0; 
+  width: 14px;
+  border: 0;
+  background: none;}
+
+/*
+table {
+    margin: 10px 0 30px 0;
+}
+
+table tr th, table tr td {
+    padding: 5px 3px;
+}
+  
+table tr td {
+    border-top: 1px solid #EDEBE5;
+}*/
+
+table.form {
+    margin: 10px 0 30px 0;
+    width:100%;
+}
+table.form tr th, table.form tr td {
+    padding:3px 3px;
+}
+table.form tr td {
+}
+table.form tr td:first-child {
+    width:140px;
+}
+.result div {
+    display:inline-block;
+    width:80px;
+    text-align:center;
+}
+.result {
+    margin:0px 0px 10px 0px;
+    /*list-style-type:decimal;
+    list-style-position:inside;*/
+}
+
+.result div.done {
+    color:blue;
+}
+.result div.no {
+    text-decoration:line-through;
+    color:gray;
+}
+.result div.back {
+    color:red;
+    font-weight:bold;
+}

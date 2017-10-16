@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<?php
+
+require_once("source/para.php") ;
+$messenge = "" ;
+if (time() > $deadline)
+  $messenge = "報名已截止。" ;
+else {
+  require_once("source/db.php") ;
+  require_once("source/school_trans.php") ;
+  $db = new DB;
+  if (! $db->open()) {
+    $messenge = "資料寫入失敗：無法開啟資料庫。" ;
+    die($db->error()) ;
+  }
+  if (! $db->query("UPDATE $dataTableName SET State = 9, Reason = '重新報名' Where AutoNo = " . $_POST['AutoNo']))
+    die($db->error()) ;
+  if (! $db->query("Insert Into $dataTableName (" .
+      "SignTime, IP, Name, Sex, ID, BirthDay, Parent, Email, Phone, " .
+	  "CellPhone, Address, School, Grade, Introduction) Values ('" .
+	  date("Y-m-d H:i:s", time()) . "', '" .
+	  getenv ("REMOTE_ADDR") . "', '" .
+	  $_POST['p_Name'] . "', " .
+	  $_POST['p_Sex'] . ", '" .
+	  $_POST['p_ID'] . "', '" .
+	  $_POST['p_Birthday'] . "', '" .
+	  $_POST['p_Parent'] . "', '" .
+	  $_POST['p_Email'] . "', '" .
+	  $_POST['p_Phone'] . "', '" .
+	  $_POST['p_CellPhone'] . "', '" .
+	  $_POST['p_Address'] . "', '" .
+	  $_POST['p_School'] . "', " .
+	  $_POST['p_Grade'] . ", '" .
+	  $_POST['p_Introduction'] . "')")) {
+    $messenge = "資料寫入失敗：新增資料失敗。" ;
+    die($db->error()) ;
+  }
+  $db->freeResult() ;
+  $db->close() ;
+}
+
+?>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="zh-TW" />
+  <meta name="keywords" content="台大物理營,臺大物理營,物理營,大學營隊,物理,Physics,Camp,NTU">
+  <title>2010 台大物理營 不可能的任物</title>
+  <link rel="stylesheet" type="text/css" href="../style/style.css" />
+  <link rel="stylesheet" type="text/css" href="../style/green.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="logo"><h1>2010 台大物理營 不可能的任物</h1></div>
+    <div id="content">
+      <div id="menu">
+        <ul>
+          <li><a href="../index.htm">不可能的任物</a></li>
+          <li><a href="../p2_intro.htm">營隊簡史</a></li>
+          <li><a href="../p3_activity.htm">活動資訊</a></li>
+          <li><a id="selected" href="../p4_signup.htm">報名專區</a></li>
+          <li><a href="../p5_faq.htm">常見問題</a></li>
+          <li><a href="../board/board.php">留言板</a></li>
+          <li><a href="../p7_contact.htm">聯絡方式</a></li>
+        </ul>
+      </div>
+      <div id="column1">
+        <div class="sidebaritem">  
+	<div class="sbihead">
+            <h1>最新消息</h1>
+	  </div>
+          <!-- **** INSERT NEWS ITEMS HERE **** -->
+          <h2>2009/12/19</h2>
+          <pnews>報名已截止</pnews>
+          <h2>2009/12/16</h2>
+          <pnews><font color="maroon">行前通知已上線</font></pnews>
+          <h2>2009/11/22</h2>
+          <pnews>網站正式上線</pnews>
+		  <h2>2009/11/12</h2>
+          <pnews>網站製作開始</pnews>
+          <h2></h2>
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+      <div id="column2">
+        <h1>線上報名系統</h1>
+        <p><a href="../p4_signup.htm">回報名專區</a>　|　
+        我要報名　|　 
+        <a href="./look_up_enter.php">查詢資料</a>　|　
+        <a href="./edit_enter.php">修改資料</a>　|　
+        <a href="./delete_enter.php">取消報名</a></p>
+        <br />
+
+	<div>
+	
+<?php
+if ($messenge != "") {
+  echo "<p class='style3'>", $messenge, "</p>" ;
+  echo "<p><a href='#' onclick='location.href=\"sign_up_form.php\";'>回上一頁</a>" ;
+}
+else
+  echo "<script language='JavaScript'>alert('報名成功！謝謝。'); location.href='../p4_signup.htm';</script>" ;
+?>
+
+	</div>
+      </div>
+    </div>
+    <div id="footer">
+    Copyright &copy; <a href="http://www.phys.ntu.edu.tw" target="_blank">台大物理系</a>系學會 | template designed by <a href="http://www.dcarter.co.uk" target="_blank">dcarter</a> | best view in <a href="http://www.moztw.org/" target="_blank">Firefox</div>
+  </div>
+  </div>
+</body>
+</html>

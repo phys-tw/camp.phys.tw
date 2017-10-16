@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<title>無標題文件</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #ECE9D8;
+	background-image: url(images/left_background.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function cMusic() {
+  if (document['music_form'].music.checked) {
+    bgmusic.innerHTML = "<embed src='music/06physcamp_music.mid' hidden='true' loop='true' autostart='true'>" ;
+  }
+  else {
+    bgmusic.innerHTML = "" ;
+  }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+//-->
+</script>
+</head>
+
+<body onLoad="MM_preloadImages('images/toolbar-1.gif','images/toolbar-1-on.gif','images/toolbar-2-on.gif','images/toolbar-3-on.gif','images/toolbar-4-on.gif','images/toolbar-5-on.gif','images/toolbar-6-on.gif'); cMusic();">
+<table border="0" cellpadding="0" cellspacing="0" style="margin-top: 12px; margin-left: 12px">
+  <tr>
+    <td height="62"><a href="home_frame.htm" target="main_frame" onClick="MM_nbGroup('down','group1','home','images/toolbar-1-on.gif',1)" onMouseOver="MM_nbGroup('over','home','images/toolbar-1-on.gif','',1)" onMouseOut="MM_nbGroup('out')"><img src="images/toolbar-1-on.gif" alt="首頁" name="home" width="129" height="56" border="0" onload="MM_nbGroup('init','group1','home','images/toolbar-1.gif',1)"></a></td>
+  </tr>
+  <tr>
+    <td height="62"><a href="news_frame.htm" target="main_frame" onClick="MM_nbGroup('down','group1','news','images/toolbar-2-on.gif',1)" onMouseOver="MM_nbGroup('over','news','images/toolbar-2-on.gif','',1)" onMouseOut="MM_nbGroup('out')"><img src="images/toolbar-2.gif" alt="最新消息" name="news" width="129" height="56" border="0" onload=""></a></td>
+  </tr>
+  <tr>
+    <td height="62"><a href="sign_up_frame.htm" target="main_frame" onClick="MM_nbGroup('down','group1','sign_up','images/toolbar-3-on.gif',1)" onMouseOver="MM_nbGroup('over','sign_up','images/toolbar-3-on.gif','',1)" onMouseOut="MM_nbGroup('out')"><img src="images/toolbar-3.gif" alt="線上報名" name="sign_up" width="129" height="56" border="0" onload=""></a></td>
+  </tr>
+  <tr>
+    <td height="62"><a href="intro_frame.htm" target="main_frame" onClick="MM_nbGroup('down','group1','intro','images/toolbar-4-on.gif',1)" onMouseOver="MM_nbGroup('over','intro','images/toolbar-4-on.gif','',1)" onMouseOut="MM_nbGroup('out')"><img src="images/toolbar-4.gif" alt="活動介紹" name="intro" width="129" height="56" border="0" onload=""></a></td>
+  </tr>
+  <tr>
+    <td height="62"><a href="link_frame.htm" target="main_frame" onClick="MM_nbGroup('down','group1','link','images/toolbar-5-on.gif',1)" onMouseOver="MM_nbGroup('over','link','images/toolbar-5-on.gif','',1)" onMouseOut="MM_nbGroup('out')"><img src="images/toolbar-5.gif" alt="相關連結" name="link" width="129" height="56" border="0" onload=""></a></td>
+  </tr>
+  <tr>
+    <td height="62"><a href="question_frame.htm" target="main_frame" onClick="MM_nbGroup('down','group1','question','images/toolbar-6-on.gif',1)" onMouseOver="MM_nbGroup('over','question','images/toolbar-6-on.gif','',1)" onMouseOut="MM_nbGroup('out')"><img src="images/toolbar-6.gif" alt="問題詢答" name="question" width="129" height="56" border="0" onload=""></a></td>
+  </tr>
+</table>
+
+<form name="music_form">
+  <div id="bgmusic" style="position: absolute"></div>
+  <table border="0" width="120" cellpadding="0" cellspacing="0" style="margin-top: 20px">
+    <tr>
+      <td width="50" align="right" valign="top">
+        <input type="checkbox" name="music" checked onClick="cMusic();"></input>
+      </td>
+      <td valign="top">
+        <p align="center" style="color: #555555; font-size: 10pt; font-family: 細明體">營歌播放<br>[ <a href="music/06physcamp_music.gif" target="_blank" style="color: #555555; font-size: 10pt; font-family: 細明體">歌譜</a> ]</p>
+      </td>
+    </tr>
+  </table>
+</form>
+
+<div id="Layer1" style="position:absolute; visibility: hidden;">
+<script language="Javascript">
+    var stat_url = "http://st.phys.ntu.edu.tw/physcamp/stat";
+</script>
+<script language="Javascript" src="http://st.phys.ntu.edu.tw/physcamp/stat/stat.js"></script>
+<script language="Javascript" src="http://st.phys.ntu.edu.tw/physcamp/stat/display.php"></script>
+</div> 
+
+</body>
+</html>

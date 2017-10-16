@@ -1,0 +1,1209 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
+<title>巴登-巴登富豪邀請賽</title>
+
+<style type="text/css">
+<!--
+
+body {
+background-attachment: fixed;
+background-image: url("answerUp_bgImg.jpg");
+background-repeat: no-repeat; 
+}
+
+input.matrix {
+font-size: 28pt;
+font-family: Arial;
+font-weight: bold;
+text-align: center;
+height: 120;
+width: 125;
+}
+
+input.second {
+font-size: 18pt;
+font-family: Arial;
+font-weight: bold;
+text-align: center;
+height: 60;
+width: 150;
+}
+
+.parameter {
+display: none;
+}
+
+table.popout {
+
+width: 680px;
+height: 550px;
+
+position: absolute;
+top: 40px;
+left: 140px;
+
+opacity: 0.8;
+-moz-opacity: 0.8;
+filter: Alpha(opacity=80);
+z-index: 99;
+display: none;
+
+}
+
+table.question {
+
+height: 550px;
+padding: 10px;
+display: none;
+border: 2px solid #0000cc;
+background-color: #ccffff;
+
+}
+
+td.question {
+
+width: 640px;
+height: 300px;
+font-size: 25pt;
+font-family: Times New Rooman;
+font-weight: bold;
+vertical-align: top;
+
+}
+
+td.option {
+
+height: 50px;
+padding: 0px 10px 0px 10px;
+font-size: 20pt;
+font-family: Arial;
+font-weight: bold;
+color: rgb(0,0,102);
+
+}
+
+td.colorbar {
+width: 100px;
+text-align: center;
+font-weight: bold;
+
+}
+
+span.team {
+
+font-size: 80pt;
+font-family: Arial;
+font-weight: bold;
+text-align: center;
+color: rgb(0,102,0);
+height: 150;
+width: 150;
+}
+
+-->
+</style>
+
+
+
+</head>
+
+<script>
+
+var butt2qIndex = new Array(25);
+var state = 0;
+var buttIndex = 0;
+var qIndex = 0;
+
+var buttColorArr = new Array("#ffccff","#ccccff","#99ccff","#ffcc99","#cccc99","#99cc99","#ffffcc","#ccffff","#ccff99","#66ffcc");
+//var opColorArr = new Array("#CCFFCC","#00CC00","red","gray");
+//var butttextColorArr=new Array("white","white","white","black","black","white","white","white","black","black");
+
+function clearOption(){
+if(qIndex<qLen){
+    opA_Arr[qIndex].style.cssText = 'background-color:null;';
+    opB_Arr[qIndex].style.cssText = 'background-color:null;';
+    opC_Arr[qIndex].style.cssText = 'background-color:null;';
+    opD_Arr[qIndex].style.cssText = 'background-color:null;';
+    opTextA_Arr[qIndex].style.cssText = 'color: rgb(0,0,102);';
+    opTextB_Arr[qIndex].style.cssText = 'color: rgb(0,0,102);';
+    opTextC_Arr[qIndex].style.cssText = 'color: rgb(0,0,102);';
+    opTextD_Arr[qIndex].style.cssText = 'color: rgb(0,0,102);';
+    qText_Arr[qIndex].style.cssText = 'color: null;';
+}
+}
+
+function showPopout(new_state){
+if (new_state==1 || new_state==9){
+    state = new_state; //this fx can change state
+    document.getElementById('popoutFrame').style.cssText = 'display:block;';
+    for(i=0; i<butt_Arr.length; i++) butt_Arr[i].disabled = true;
+    document.getElementById('setfoucs').focus();
+}
+}
+
+function hidePopout(){
+state = 0; //this fx can change state
+document.getElementById('popoutFrame').style.cssText = 'display:none;';
+for(i=0; i<butt_Arr.length; i++) butt_Arr[i].disabled = false;
+document.getElementById('ansTeam').innerHTML=null;
+}
+
+
+function newqTable(new_qIndex){
+
+qTable_Arr[qIndex].style.cssText = 'display:none;';
+
+if(new_qIndex>=0 && new_qIndex<qLen){
+    qIndex = new_qIndex;
+    clearOption();
+    qTable_Arr[qIndex].style.cssText = 'display:block;';
+}
+}
+
+function show(new_buttIndex){
+
+if(butt2qIndex[new_buttIndex]<=0){
+    alert('There is no question!');
+}
+else{
+buttIndex = new_buttIndex;
+newqTable(butt2qIndex[buttIndex]);
+showPopout(1);
+}
+}
+
+function random(){
+if(sel.length==0){
+    alert('There is no more question!');
+    return -1;
+}
+else{
+    var randomNum = Math.floor(Math.random()*sel.length);
+    var rvalue = parseInt(sel.options[randomNum].value);
+    sel.remove(randomNum);
+    document.getElementById('restNum').value = sel.length;
+    return rvalue;
+}
+}
+
+function random_ini(){
+for(i=0; i<100; i++) sel.remove(sel.length-1);
+for(i=1; i<qLen; i++) sel.options[sel.length] = new Option(i, i);
+for(i=0; i<25; i++) butt2qIndex[i] = random();
+}
+
+
+function lightButt(colorIndex){
+if (colorIndex==11){
+  butt_Arr[buttIndex].value = "X";
+  butt_Arr[buttIndex].style.cssText = 'color:darkred; background-color:gray;';
+}
+else{
+  butt_Arr[buttIndex].value = (buttIndex+1);
+  butt_Arr[buttIndex].style.cssText = 'background-color:'+buttColorArr[colorIndex]+';';
+}
+}
+
+
+function checkAns(typeAns){
+
+var thisAns = answer.substr(qIndex-1, 1).toUpperCase();
+if (thisAns!=typeAns){
+    var myCss = 'background-color:gray;';
+
+    switch (typeAns){
+    case "A":
+        opA_Arr[qIndex].style.cssText = myCss;
+        break;
+    case "B":
+        opB_Arr[qIndex].style.cssText = myCss;
+        break;
+    case "C":
+        opC_Arr[qIndex].style.cssText = myCss;
+        break;
+    case "D":
+        opD_Arr[qIndex].style.cssText = myCss;
+        break;
+    }
+}
+else showAns();
+}
+
+function showAns(){
+
+var thisAns = answer.substr(qIndex-1, 1).toUpperCase();
+var myCss2 = 'background-color:lime;';
+    
+switch (thisAns){
+    
+    case "A":
+        opA_Arr[qIndex].style.cssText = myCss2;
+        break;
+    case "B":
+        opB_Arr[qIndex].style.cssText = myCss2;
+        break;
+    case "C":
+        opC_Arr[qIndex].style.cssText = myCss2;
+        break;
+    case "D":
+        opD_Arr[qIndex].style.cssText = myCss2;
+        break;
+}
+}
+
+
+function chooseTeam(teamIndex){
+document.getElementById('ansTeam').innerHTML=teamIndex;
+
+}
+
+function keyDown(ffevent) {
+
+key=ffevent.keyCode;
+//alert(key);
+
+if(state=="1"){
+    switch(key){
+    case 13:
+        hidePopout();
+        break;
+        
+    case 48:
+        lightButt(9);
+        break;
+    case 49:
+    case 50:        
+    case 51:
+    case 52:
+    case 53:        
+    case 54:
+    case 55:
+    case 56:          
+    case 57:
+        lightButt(key-49);
+        break;
+    
+    case 109:
+        lightButt(11);
+        break;
+             
+    case 61:   
+        lightButt(10);
+        break;
+        
+    case 77:   
+        butt2qIndex[buttIndex] = random();
+        if (butt2qIndex[buttIndex]<0) hidePopout();
+        else{
+            newqTable(butt2qIndex[buttIndex]);
+            showPopout();        
+        }
+        break;
+        
+    
+    case 85:
+        checkAns("A");
+        break;
+    case 73:
+        checkAns("B");
+        break;
+    case 79:          
+        checkAns("C");
+        break;
+    case 80:  
+        checkAns("D");
+        break;
+    case 76:  
+        showAns();
+        break;
+    case 75:
+        clearOption();
+        break;
+        
+    case 81:    //q
+        chooseTeam(3);
+        break;
+    case 65:    //a
+        chooseTeam(2);
+        break;
+    case 90:    //z
+        chooseTeam(7);
+        break;
+    case 87:    //w
+        chooseTeam(1);
+        break;
+    case 83:    //s
+        chooseTeam(6);
+        break;
+    case 69:    //e
+        chooseTeam(9);
+        break;
+    case 68:    //d
+        chooseTeam(10);
+        break;
+    case 82:    //r
+        chooseTeam(4);
+        break;
+    case 70:    //f
+        chooseTeam(5);
+        break;
+    case 86:    //v
+        chooseTeam(8);
+        break;
+    }
+}
+
+if(state=="0" && key==72){
+    newqTable(0);
+    showPopout(9);
+}
+if(state=="9" && key==13){
+    hidePopout();
+}
+
+}
+
+</script>
+
+<body style="margin-top:18;">
+
+<center>
+<div>
+
+<table width="960"><tr>
+
+<td rowspan=2 width="750" align="right">
+
+<!-- 按鈕矩陣開始 -->
+<span id="buttMat" name="buttMat">
+<input class="matrix" type="button" id="butt" name="butt" value="1" onclick="show(0);">
+<input class="matrix" type="button" id="butt" name="butt" value="2" onclick="show(1);">
+<input class="matrix" type="button" id="butt" name="butt" value="3" onclick="show(2);">
+<input class="matrix" type="button" id="butt" name="butt" value="4" onclick="show(3);">
+<input class="matrix" type="button" id="butt" name="butt" value="5" onclick="show(4);">
+<br>
+<input class="matrix" type="button" id="butt" name="butt" value="6" onclick="show(5);">
+<input class="matrix" type="button" id="butt" name="butt" value="7" onclick="show(6);">
+<input class="matrix" type="button" id="butt" name="butt" value="8" onclick="show(7);">
+<input class="matrix" type="button" id="butt" name="butt" value="9" onclick="show(8);">
+<input class="matrix" type="button" id="butt" name="butt" value="10" onclick="show(9);">
+<br>
+<input class="matrix" type="button" id="butt" name="butt" value="11" onclick="show(10);">
+<input class="matrix" type="button" id="butt" name="butt" value="12" onclick="show(11);">
+<input class="matrix" type="button" id="butt" name="butt" value="13" onclick="show(12);">
+<input class="matrix" type="button" id="butt" name="butt" value="14" onclick="show(13);">
+<input class="matrix" type="button" id="butt" name="butt" value="15" onclick="show(14);">
+<br>
+<input class="matrix" type="button" id="butt" name="butt" value="16" onclick="show(15);">
+<input class="matrix" type="button" id="butt" name="butt" value="17" onclick="show(16);">
+<input class="matrix" type="button" id="butt" name="butt" value="18" onclick="show(17);">
+<input class="matrix" type="button" id="butt" name="butt" value="19" onclick="show(18);">
+<input class="matrix" type="button" id="butt" name="butt" value="20" onclick="show(19);">
+<br>
+<input class="matrix" type="button" id="butt" name="butt" value="21" onclick="show(20);">
+<input class="matrix" type="button" id="butt" name="butt" value="22" onclick="show(21);">
+<input class="matrix" type="button" id="butt" name="butt" value="23" onclick="show(22);">
+<input class="matrix" type="button" id="butt" name="butt" value="24" onclick="show(23);">
+<input class="matrix" type="button" id="butt" name="butt" value="25" onclick="show(24);">
+<br>
+</span>
+<!-- 按鈕矩陣結束 -->
+
+</td>
+<td  height="200" width="200" align="center" valign="top"><font size="4"><b>搶答小隊</b></font><br><span class="team" id="ansTeam" name="ansTeam"></span></td>
+</tr>
+<tr>
+<td width="200" align=center>
+<table>
+<tr><td class="colorbar">各國代表色</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">1</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">2</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">3</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">4</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">5</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">6</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">7</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">8</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">9</td></tr>
+<tr><td class="colorbar" id="cbar" name="cbar">10</td></tr>
+</table>
+<br>
+<input type="button" id="butt" name="butt" value="重新產生題目" onclick="random_ini();"><br>
+<input type="button" id="butt" name="butt" value="遊戲進行規則" onclick="location.href='answerUp_rule.pps';"><br>
+<input id="restNum" name="restNum" size="4" style="background-color:transparent; border:0px;">
+</td>
+</tr>
+</table>
+
+
+<!-- popout frame 開始-->
+<table class="popout" id="popoutFrame" name="popoutFrame"><tr><td>
+<input id="setfoucs" name="setfoucs" class="parameter">
+
+<!-- qIndex=0 為說明頁-->
+<table class="question" id="qTable" name="qTable">
+<tr><td class="question" colspan="2"><span id="qText" name="qText">
+<font size="4">
+**** This program can NOT be used in IE. Only supports FireFox.****<br><br>
+* Click the buttons in the matrix to enter the question window.<br>
+* Click the button on the right-bottom to regenerate the random questions for all buttoms.<br><br>
+* When in the floating question window:<br><br>
+　　Press <u>Enter</u> to leave the window.<br><br>
+　　Press <u>0~9</u> to change the color of the button.<br>
+　　Press <u>－</u> to change the button to X.<br>
+　　Press <u>＝</u> to restore the button properties.<br><br>
+　　Press <u>u/i/o/p</u> to check if the answer (A/B/C/D) is right.<br>
+　　Press <u>l</u> to show the right answer.<br>
+　　Press <u>k</u> to clear the color of the options.<br><br>
+　　Press <u>m</u> to get a new random question for the buttom.<br><br>
+    Press <u>qaz/ws/ed/rfv</u> to change the right-top number to 3,2,7/1,6/9,10/4,5,8.<br>
+
+</font>
+</span></td></tr>
+<tr><td id="opA" name="opA" height="0"><span id="opTextA" name="opTextA"></span></td></tr>
+<tr><td id="opB" name="opB" height="0"><span id="opTextB" name="opTextB"></span></td></tr>
+<tr><td id="opC" name="opC" height="0"><span id="opTextC" name="opTextC"></span></td></tr>
+<tr><td id="opD" name="opD" height="0"><span id="opTextD" name="opTextD"></span></td></tr>
+</table>
+
+<!--題庫由此開始 qIndex=1 -->
+
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">熱學中的PV圖曲線下的面積代表什麼？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)好吃的冰淇淋
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)內能
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)熱能
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)作功 
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">熱學所示範的引擎是哪一種？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)卡諾引擎
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)焦耳引擎
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)史特林引擎
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)波茲曼引擎
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">史特林引擎是運用哪兩種過程來達成循環呢？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)等體積過程跟等溫過程
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)等體積過程跟絕熱過程
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)等體積過程跟等壓過程
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)等溫過程跟絕熱過程
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">熱學中的PV圖可用來表示引擎的循環，是什麼圖？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)位置─速度
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)動量─速率
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)功率─頻率
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)壓力─體積
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問液態氮的沸點是？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A) 100℃
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B) 0 K
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C) -77℃
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D) 77K
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">正電荷的電力線朝哪?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)朝內
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)朝上
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)朝我
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)朝外     
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">電力線密的地方電場?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)比較強
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)比較弱
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)零
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)無限大
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">電場是什麼場?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)純量場
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)向量場
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)溫度場
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)籃球場
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">捷運煞車系統運用的是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)屏蔽效應
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)高斯定律
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)渦電流
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)愛
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下列哪些方法可以讓電容充電?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)接電池
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)接游泳池
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)接wii
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)擁抱它
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">收音機放在鋁箔紙籠子裡沒有聲音,
+手靠近時又有聲音, 是因為?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)牠想咬人
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)人體可以傳遞電磁波
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)手進去打開了開關
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)原本沒有裝電池, 是手進去裝電池的
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">全反射會發生在？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)由光速快的介質進到慢的介質
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)世界上不會發生全反射
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)由光速慢的介質進到快的介質
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)隨便兩個介質都可能發生
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">光是走？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)最短的路徑
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)最直的路徑
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)最長的路徑
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)最快的路徑
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">平行光通過球形凸透鏡，將會
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)會聚於焦點
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)會聚於兩倍焦距
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)發散
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)以上皆非
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">洗照片時，會有酸味的是那一個沖洗劑？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)顯影劑
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)停影劑
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)定影劑
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)自來水
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">簡單透鏡相機，應該要把底片放在距離鏡頭大約多遠的地方。
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A) 0.5倍焦距
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B) 1倍焦距
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C) 2倍焦距
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D) 3.14159倍焦距
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下列何者屬於”波”?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)雞蛋
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)聲音
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)校園中之情侶
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)光碟片
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">現在你是一個投手，如果要投出直球，投出的球要如何旋轉?(由投手看出去的方向)
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)由左向右
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)由右向左
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)不轉
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)由上到下
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">一顆球朝打者飛過來，當打者看到球是順時針旋轉時，最後球會往哪邊轉?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)上飄
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)下沉
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)左移
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)右移
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">飛機起飛時，機翼哪邊的空氣流動比較快?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)上面
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)下面
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)左邊
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)右邊
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">非牛頓液體為什麼叫做非牛頓液體?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)因為是”非牛頓”作的….
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)因為不是牛頓作的
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)因為他的行為不符合牛頓力學常用的線性
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)因為他是白色的
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下列何者是非牛頓液體?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)血液
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)牙膏
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)以上皆是
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)以上皆非
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">我們通常定義光的偏振方向是什麼場的偏振方向？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)藍球場
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)磁場
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)網球場
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)電場
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">有一道各方向偏振都有的光，偏振片其內部可導電長鏈分子的長鏈方向為上下，請問透過偏振片的光，其偏振方向為？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)上下
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)左右
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)一點
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)各向都有
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">有一道波波長5cm，當狹縫寬度為何時，繞射圖形最明顯？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A) 100 cm
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B) 50 cm
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C) 50 mm
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D) 5000 cm
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">光是電場和什麼場交互作用而產生的？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)重力場
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)操場
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)八吋晶圓廠
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)磁場
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下面哪樣東西具有旋光性？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)光
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)高分子化合物
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)電
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)重力
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">為各位菁英講解偏振的科學家是？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)惠更斯、楊格
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)李遠哲、李政道
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)彭彭、丁滿
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)原原、吹哥
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">物理學家們用什麼方法判斷轉動的方向?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)丟銅板決定
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)順時針、逆時針
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)右腳定則
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)右手定則
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">在轉動的時空中你曾經看過一個有趣的現象：有一個立著轉動的車輪，當支撐點偏離重心時，這個車輪不但不會倒下或掉到地上，還會繞著一個軸公轉。這現象稱為「進動」。進動除了可以用圓周運動的原理去解釋以外，在課堂上Lagrange曾試圖以某種原理去解釋它，請問是什麼原理?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)動量守恆
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)角動量守恆
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)克普勒行星三大運動定律
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)蝴蝶效應
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">什麼情況下，角動量守恆會發生在一個物體身上?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)有力矩作用時。
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)這個物體沒有在動時。
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)我沒有在觀察這個物體時。
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)沒有力矩作用時。
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">製作倒轉陀螺的過程中，為什麼要幫乒乓球泡熱水?
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)天氣太冷。
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)小賀講的笑話太冷。
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)讓裡面的蠟融化。
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)讓乒乓球融化。
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問印度的種姓制度中，”首陀羅”的階級是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)僧侶
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)奴隸
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)武士與貴族
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)農人工匠商人
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問希臘思想家泰利斯(Thales)
+的基本主張是”萬物源於”
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)水
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)金
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)木
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)宅
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問希臘化文化(BC323~BC30)中，被稱為縱欲派的是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)斯巴達(Sparta！)
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)伊比鳩魯學派(Epicurism)
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)薔薇派(Rose pie)
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)普普學派(pu-pu pie)
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">天主教派的分類眾多，請問下列何者是”天主教派”？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)摩門教
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)衛斯理教派
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)耶穌會
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)長老教會
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列各古文化中，何者非美洲文化？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)印加
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)毛利
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)瑪雅
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)阿茲提克
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問赫赫有名的啟蒙運動，約發生在哪個世紀？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)西元前五世紀
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)二十一世紀
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)十八世紀
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)八世紀
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問割讓台灣的馬關條約，是下列哪一位歷史人物簽訂的？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)李斯特
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)李小龍
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)李白
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)李鴻章
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">”自由！自由！多少人假使知名以行之”，是現今廣為流傳的一句話。請問這句話是源自於下列哪一事件？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)獨立宣言
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)法國大革命
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)台灣總統大選
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)文化大革命
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問以二二八事件為基礎的電影“悲情城市”的著名華人導演是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)侯孝賢
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)蔡明亮
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)李安
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)李康生
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">唐代有許多著名的書法家，請問下列哪一位並不是”初唐三家”之一
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)歐陽詢
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)虞世南
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)褚遂良
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)歐陽修
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問托爾斯泰的作品中，哪一部是以1812年拿破崙侵俄的戰爭為中心
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)十日談
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)老人與海
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)地海巫師
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)戰爭與和平
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問被稱為圓舞曲之王的維也納音樂家是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)舒伯特
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)小約翰史特勞斯
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)蕭邦
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)老約翰史特勞斯
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">1928年11月18日上映了全球第一部有聲動畫片，請問該片的主角是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)藤原佐為
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)小熊維尼
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)米老鼠
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)龍貓
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列哪一部作品不是著名作家莎士比亞的喜劇之一
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)暴風雨
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)仲夏夜之夢
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)哈姆雷特
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)無事生非
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問寫下經濟學界知名著作”國富論”的作者是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)維爾史密斯
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)亞當斯密
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)馬克思
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)馬爾薩斯
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問重商主義(Mercanilism)的起因是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)砸到波茲曼的蘋果，同時發現重力及熵
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)國家主義興起
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)康熙來了
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)阿姆斯壯登陸月球
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">1929年，全球經濟大恐慌時，有一位見解獨到的經濟學家，主張降低利息、增加政府支出等，請問是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)馬克思(Karl Heinrich Marx)
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)魷魚絲(Squid)
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)螺絲(Screw)
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)凱因斯(Keynes)
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">南韓國旗中用藍紅色的太極旗，以白色作為底色。白色表示白衣民族的純真光明、藍色表示希望及陰。請問紅色表示什麼
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)死亡及愛
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)紅血球與血小板
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)尊貴與陽
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)飛鳥和魚
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下列哪一個不是有名的金磚四國之一
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)中國
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)巴西
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)台灣
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)俄羅斯
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">你知道知名自行車品牌巨大機械(捷安特)，是由台灣人創立的嗎？請問他們發跡於台灣的哪裡呢？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)台中大甲
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)高雄鳳山
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)台南麻豆
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)台北深坑
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">著名經濟學者認為人口呈等比級數上升，而糧食危等差級數增加的是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)博格森
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)富立曼
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)馬爾薩斯
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)邊沁
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">民國73年在民生東路成立台灣第一家速食店的是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)麥當勞
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)肯德基
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)溫蒂
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)漢堡王
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問台灣出生的美國華裔企業家陳士駿，是哪一家網路影音分享網站公司的創辦人之一？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)Acer
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)Youtube
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)Apple
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)Microsoft
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下列哪些不是「古代的世界七大奇景」之一？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)埃及金字塔
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)巴比倫空中花園
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)羅馬競技場
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)羅德港巨像
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列名人中，何者最矮？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)美國現任總統布希
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)拿破崙
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)姚明
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)馬英九
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">英國廣播公司為世界上第一個開播電視的電視台，請問他的縮寫是：
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)BBC
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)DDT
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)NBA
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)OMG
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">二十世紀初到六○年代存在主義為思想潮流，請問下列哪一位不是其大師
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)沙特
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)鄧不利多
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)海德格
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)卡繆
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列亞洲國家當中，何者不與中國大陸相連？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)不丹
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)尼泊爾
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)寮國
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)馬來西亞
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">一個多月前才當選韓國新任總統的是
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)李伯伯
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)李明博
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)李博明
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)盧明博
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問在去年十二月底的恐怖攻擊中被刺殺的貝˙布托，是哪一國的前總理？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)巴基斯坦
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)巴勒斯坦
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)飛天魔毯
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)伊拉克
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問在這次2008年1月3日美國總統大選預選中，希拉蕊與歐巴馬同為哪一黨的參選人？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)工黨
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)民進黨
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)國民黨
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)民主黨
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問時下流行的塑膠洞洞園丁鞋，因為哪一位人士穿過而大為有名
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)日本首相福田康夫
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)俄國總統普金
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)美國總統布希
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)法國前總統席哈克
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問近日剛與中共建交而與中華民國斷交的，是哪一個國家
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)英國
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)馬拉威
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)美國
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)俄國
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列哪一個國家不是現在的歐盟國之一
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)土耳其
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)法國
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)冰島
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)愛沙尼亞
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問近日風靡德國的”雪花”，是德國紐倫堡動物園剛出生幾個禮拜大的什麼動物？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)叮噹貓
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)傑尼龜
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)大眼蛙
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)北極熊
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下列哪一位棒球球員，沒有入選去年亞洲棒球錦標賽？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)陽森
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)張泰山
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)王建民
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)彭政閔
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問對於奧運的五色環(藍黑紅黃綠)中，下列何者的敘述是正確的？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)由奧委會主席顧拜旦提議設計
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)奧林匹克旗上一共有七種顏色
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)奧林匹克環上的各色一一對應到七大洋
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)從左至右為天藍、綠、黃、紅四色
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">兩列火車車頭相距200km，正以時速100km/hr的速率對撞，其中有一隻蒼蠅，以4km/hr的速率從其中一台火車頭開始，在列車對撞途中來回不斷飛行。請問它在被兩列車撞死前，總共飛行的距離有多長？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)4km
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)7km
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)2km
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)100km
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列何者為「名偵探柯南劇場版」當中，最早播映的一部︰
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)引爆摩天樓
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)偵探們的安眠曲
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)鼻孔中的秒殺者
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)貝克汗的亡靈
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列何者出生年代最晚？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)拉菲爾
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)柏拉圖
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)布希
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)原始人露西
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問小叮噹（哆啦A夢）的身體各部位裝備中，尚未故障的是︰
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)具感受遠方物體能力的雷達鬍鬚
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)比人類強20倍的強力鼻
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)高感度音波測定耳
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)四次元口袋
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問在第一天下午，「維也納薈萃‧角落的霧裡」活動中，亟欲度過多瑙河的漢密爾頓先生，在歷史上被公認為是什麼學家？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)歷史學家
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)天文學家
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)數學家
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)橋墩工程學家
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問在第一天下午，「維也納薈萃‧角落的霧裡」活動中，正在進行地鐵實驗的先生，據說是下列哪兩位名人(朋友)的後代？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)愛因斯坦及普朗克
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)愛因斯坦及居禮夫人
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)JJ Thompson及JK Rolling
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)GG Holiday及JK Flip-flop
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問在第一天晚上，「物理平衡方程式」活動中，物理大神用來決定物理定律的原則是…
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)一顆具有奇妙對稱性的六面骰
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)大數法則
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)大便法則
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)將客觀機率分佈的BJT微分特性曲線取saturation時候的反曲點後對非歐李代數空間做泰勒展開近似後得到一組相互反向振盪但不具線性獨立特性的Eigen function中取√3次項的perturbance.
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列關於卡通小叮噹（哆啦A夢）的敘述中，何者為正確？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)遇到老鼠時逃走時時速19.3km/hr
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)為23世紀貓型育兒用機器人
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)沒有貓狀耳朵是因為被老鼠咬掉了
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)鈴鐺為電力源所在
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問本活動名稱所說的地點，位於歐洲何處？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)奧地利 維也納
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)奧黛莉 赫本
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)德國 巴登-符騰堡州
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)英國 賓拉登-巴非力亞州
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問著名音樂家小約翰-史特勞斯（1825，相當於中國清朝時期）曾被譽為什麼之王︰
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)我是胖虎我是孩子王
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)圓舞曲
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)輕歌劇
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)清代新元曲
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列關於天線寶寶(teletubbies)之敘述，何者為非？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)台灣公共電視台曾重製了台語版天線寶寶
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)提出構想者為中學英文教師ANNE WOOD
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)為英國BBC幼幼兒徵案比賽當中，脫穎而出的構想
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)丁丁頭上的天線是圓形的
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列何者為前天晚上「霧裡森林尋青鳥」活動，小精靈們在最後所做的表演當中的歌詞︰
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)小時候，躲在腋窩下頭
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)小時候，宅在電腦前頭
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)小時候，藏在被窩裡頭
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)小時候，窩在沙發上頭
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列何者未出席第一天活動”相見恨晚”？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)市長秘書
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)工程研發中心主任
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)市長
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)環境衛生管理主席
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列關於天線寶寶(teletubbies)角色配色的敘述，何者正確？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)丁丁︰黃色
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)拉拉︰綠色
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)小波︰紅色
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)迪西︰紫色
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問前晚「霧裡森林尋青鳥」活動中，第一個劇團的魔術表演當中，魔術師手指發出的光線顏色是？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)水漾的紅色
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)戒指般的銀
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)金手指當然是金色
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)其實是黑色
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">如果不小心掉進迷霧實戰的”時空裂縫”，下場會…
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)永世不得超生(never get back alive)
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)變成天線寶寶(becoming Teletubbies)
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)發生相變(phase transition occurred)
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)抵達白洞(arrives to white hole)
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列關於卡通小熊維尼Winnie the Pooh的敘述當中，何者是錯誤的？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)居住在百畝森林當中
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)約220吋高，純真可愛
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)和小豬是好朋友
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)比基斯杜化‧羅賓Christopher Robin少一歲
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列關於速食店們的敘述，何者為非？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)肯德基爺爺的真實名稱叫做桑德斯中尉
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)世界第一家麥當勞成立於1955年
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)漢堡王主打的顧客族群多為成年人
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)美國公認最早開設的快餐店是White Castle(白色城堡)
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">下列關於辛普森家族的敘述，何者錯誤？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)爸爸荷馬‧辛普森有著一頭藍色的頭髮
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)目前已經播出超過400集
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)製作人取名的方式是以自己的家族成員取名的
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)第一集播映年代為1907年
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列虛擬人物中，何者最高？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)多啦A夢
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)藤原佐為
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)奇枒
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)綠巨人浩克
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問知名卡通人物Hello Kitty是下列哪一個國家的公司所創造的？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)英國
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)美國
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)日本
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)韓國
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問蘋果電腦Apple的商標中，該蘋果的哪一區域被咬了一口？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)正面看過去的話是…右邊
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)正面看過去的話是…下面
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)蒂頭的部份
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)葉子
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問蘋果電腦Apple的知名產品IPOD中，四個英文字母哪一個字是小寫？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A) i
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B) p
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C) o
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D) d
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問知名卡通人物Hello Kitty的臉部器官跟常人比起來，少了下列哪一項︰
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)嘴巴
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)鼻子
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)眼睛
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)耳朵
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問全世界最大的連鎖便利商店集團7-ELEVEN的商標中，哪一個英文字母是小寫？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)e
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)l
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)v
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)n
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問知名連鎖便利商店OK便利店，其商標的顏色組成並不包含下列何者？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)白
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)黑
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)紅
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)黃
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問知名連鎖便利商店7-ELEVEN，其商標的顏色組成並不包含下列何者？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)紅
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)綠
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)黃
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)白
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問知名奇幻鉅著魔戒的作者托爾金，據說原本1954年時欲打算將魔戒出版成一大本，卻因為什麼原因未能付諸實行？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)二戰後紙張短缺
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)經濟拮据，衛生紙不夠用
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)出版商向其極力鼓吹
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)物理學家朋友極力反對浪費紙張行為
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問下列有關知名系列電影星際大戰的敘述中，何者是正確的？
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)一共有七集
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)裡面的絕地武士，可用「原子力」移動物體
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)為美導演喬治貝卡斯所拍攝的科幻系列電影
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)每一集的開頭都特別不一樣
+
+</span></td></tr></table>
+<table class="question" id="qTable" name="qTable"><tr><td class="question"><span id="qText" name="qText">請問維也納工程發展中心主任養的寵物是:
+</span></td></tr><tr><td class="option" id="opA" name="opA"><span id="opTextA" name="opTextA">(A)地鼠
+</span></td></tr><tr><td class="option" id="opB" name="opB"><span id="opTextB" name="opTextB">(B)卡比獸
+</span></td></tr><tr><td class="option" id="opC" name="opC"><span id="opTextC" name="opTextC">(C)皮卡丘
+</span></td></tr><tr><td class="option" id="opD" name="opD"><span id="opTextD" name="opTextD">(D)比比鳥
+
+</span></td></tr></table>
+
+<!--題庫結束-->
+
+</td></tr></table>
+<!-- popout frame 的結束-->
+
+</div></center>
+
+<select id="qSea" name="qSea" class="parameter"></select>
+
+</body>
+
+<script>
+var answer = "DCADDDABCABCDDBBBDCACCDBCDBADBDCBABCBCDBADDBCCBBDCCACABCBABDBADCBADCAAACDCAACCBDCDCAABADDCAAADDCAAA";
+
+var opA_Arr = document.getElementsByName('opA');
+var opB_Arr = document.getElementsByName('opB');
+var opC_Arr = document.getElementsByName('opC');
+var opD_Arr = document.getElementsByName('opD');
+var opTextA_Arr = document.getElementsByName('opTextA');
+var opTextB_Arr = document.getElementsByName('opTextB');
+var opTextC_Arr = document.getElementsByName('opTextC');
+var opTextD_Arr = document.getElementsByName('opTextD');
+var qTable_Arr = document.getElementsByName('qTable');
+var qText_Arr = document.getElementsByName('qText');
+var butt_Arr = document.getElementsByName('butt');
+var qLen = qTable_Arr.length;
+var sel = document.getElementById('qSea');
+var cbar_Arr = document.getElementsByName('cbar');
+
+for(i=0; i<cbar_Arr.length; i++) cbar_Arr[i].style.cssText = 'background-color:'+buttColorArr[i]+';';
+
+random_ini();
+
+if(navigator.appName=="Microsoft Internet Explorer"){
+    alert('You can NOT use IE!!!\nThis program only supports FireFox.');
+} 
+else document.onkeydown = keyDown;
+
+</script>
+
+</html>
