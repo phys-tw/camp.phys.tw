@@ -1,135 +1,151 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-tw">
+	<head>
+		<meta charset="utf-8">
 
-<head>
-	<meta charset="utf-8">
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>2019 台大物理營</title>
-	<meta name="description" content="2017 台大物理營">
-	<meta name="author" content="b03202054">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>2019 台大物理營</title>
+		<meta name="description" content="2019 台大物理營">
+		<meta name="author" content="b03202054">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.jpg">
-
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/jquery.fullPage.css">
-	<link href="css/style3.css" rel="stylesheet" />
-	<link href="css/style_common.css" rel="stylesheet" />
-	<link href="css/bootstrap-social.css" rel="stylesheet" />
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	
-
-	<style>
-		body {
-			font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
-		}
-
-		#section_cover {
-			background: url(img/cover.png);
-			background-size: 100% auto;
-			background-position: bottom center;
-			text-align: center;
-		}
-
-		#section_cover h1 {
-			font-size: 80px;
-			color: white;
-			z-index: 10;
-			text-shadow: 1px 1px 2px #777;
-		}
-
-		#section_cover h2 {
-			font-size: 50px;
-			color: white;
-			z-index: 10;
-			text-shadow: 1px 1px 2px #777;
-		}
-
-		#section6 {
-			text-align: center;
-			vertical-align: middle;
-		}
-	</style>
-</head>
-
-<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/2448a7bd/cloudflare-static/rocket-loader.min.js" data-cf-nonce="d79bfbe497239eee522ecb3d-"></script>
-
-<body onload="move_subscribe();">
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#cover">2019台大物理營</a>
-			</div>
-
-
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav" id="myMenu">
-					<li data-menuanchor="story">
-						<a href="#story">營隊故事</a>
-					</li>
-					<li data-menuanchor="history">
-						<a href="#history">營隊簡史</a>
-					</li>
-					<li data-menuanchor="table">
-						<a href="#table">營隊資訊</a>
-					</li>
-					<li data-menuanchor="qa">
-						<a href="#qa">常見問題</a>
-					</li>
-					<li data-menuanchor="event">
-						<a href="#event">活動簡介</a>
-					</li>
-					<li data-menuanchor="contact">
-						<a href="#contact">聯絡我們</a>
-					</li>
-				</ul>
-				<div class="navbar-right navbar-form">
-					<a class="btn btn-block btn-social btn-facebook" href="https://www.facebook.com/NTUphys/">
-						<i class="fa fa-facebook"></i>
-						粉絲專頁
-					</a>
-
+		<!-- Replace favicon.ico & apple-touch-icon.jpg in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.jpg">
+		
+		<!-- Bootstrap core CSS -->
+    	<link href="css/bootstrap.min.css" rel="stylesheet">
+    	<link rel="stylesheet" href="css/jquery.fullPage.css">
+    	<link href="css/style3.css" rel="stylesheet" />
+    	<link href="css/style_common.css" rel="stylesheet" />
+        <link href="css/bootstrap-social.css" rel="stylesheet" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    	<style>
+    		body
+    		{
+    			font-family: Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif;
+    		}
+    		#section_cover
+    		{
+    			background: url(img/cover.png);
+    			background-size: 100% auto;
+    			background-position: bottom  center;
+    			text-align: center;
+    		}
+    		#section_cover h1
+    		{
+    			font-size: 80px;
+    			color: white;
+				z-index: 10;
+  				text-shadow: 1px 1px 2px #777;
+    		}
+    		#section_cover h2
+    		{
+    			font-size: 50px;
+    			color: white;
+				z-index: 10;
+  				text-shadow: 1px 1px 2px #777;
+    		}
+    		#section6
+    		{
+    			text-align:center;
+    			vertical-align: middle;
+    		}
+    		
+    	</style>
+	</head>
+	<!-- move "subscribe" see the end-->
+	<body onload = "move_subscribe();">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#cover">2017台大物理營</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!-- 除了改這裡，最後面也要改-->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav" id="myMenu">
+						<li data-menuanchor="story">
+							<a href="#story">營隊故事</a>
+						</li>
+						<li data-menuanchor="history">
+							<a href="#history">營隊簡史</a>
+						</li>
+						<li data-menuanchor="table">
+							<a href="#table">營隊資訊</a>
+						</li>
+<!--
+						<li data-menuanchor="List">
+							<a href="#List">錄取名單</a>
+						</li>
+						<li data-menuanchor="information">
+							<a href="#information">行前通知</a>
+						</li>
+-->
+						<!--
+						<li data-menuanchor="Payment">
+							<a href="#Payment">匯款資訊</a>
+						</li>
+						-->
+						<li data-menuanchor="qa">
+							<a href="#qa">常見問題</a>
+						</li>
+						<li data-menuanchor="event">
+							<a href="#event">活動簡介</a>
+						</li>
+						<li data-menuanchor="contact">
+							<a href="#contact">聯絡我們</a>
+						</li>
+					</ul>
+                    <div class="navbar-right navbar-form">
+                        <a class="btn btn-block btn-social btn-facebook" href="https://www.facebook.com/NTUphys/" >
+                            <i class="fa fa-facebook"></i>
+                            粉絲專頁 
+                        </a>
+                    </div>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+		
+		<div id="fullpage">
+			
+			<div class="section" id="section_cover">
+				<div class="container" id="cov" style = "float: right;">
+<!--
+					<div class="row" style = "text-align:right;">
+						<p style = "color: white; font-size:20px"><i><b>cover credit to 姮格摩·紬巾&nbsp;&nbsp;&nbsp;&nbsp;</b></i></p>
+						
+						<p><a class="btn btn-primary" href="#story">↓↓↓Scroll Down↓↓↓</a></p>
+						
+					</div>
+-->
 				</div>
 			</div>
-		</div>
-	</nav>
-	<div id="fullpage">
-		<div class="section" id="section_cover">
-			<div class="container" id="cov" style="float: right;">
-				<div class="row" style="text-align:right;">
-					<!-- <p style="color: white; font-size:20px">
-						<i>
-							<b>cover credit to 物理系 白學會&nbsp;&nbsp;&nbsp;&nbsp;</b>
-						</i>
-					</p> -->
-
-				</div>
-			</div>
-		</div>
-
-		<div class="section" id="section_story">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-5">
-						<br />
-						<br />
-						<br />
-						<br />
-						<img src="img/img_1.png" class="img-responsive" id="theme_img">
-					</div>
-					<div class="col-sm-1">
-					</div>
-					<div class="col-sm-6">
-						<br />
+			
+			<div class="section" id="section_story">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-5">
+							<br />
+							<br />
+							<br />
+							<br />
+							<img src="img/img_1.png " class="img-responsive"/>
+						</div>
+						<div class="col-sm-1">
+						</div>
+						<div class="col-sm-6">
+						    <br />
 						<br />
 						<h2>營隊故事</h2>
 						<p>
@@ -157,317 +173,382 @@
 								<br/>		“Will Duality be the answer?
 								<br/>		That is a question.”
 								</i>
+                            </small>
 						</p>
-
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="section" id="section_history">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<h2>營隊簡史</h2>
-						<p>　　台大物理營是台大物理系學生會於每年寒假時會例行舉辦之冬令營隊活動，自民國八十七年首辦以來，至今已準備邁入第21屆。</p>
-						<p>　　「物理」這門科學，對於高中生來說常建立於其眾多的公式與繁雜的計算，殊不知物理的內涵，遠非一般高中教育所能述盡。我們將透過精心規劃的活動、豐富生動的演講、新奇趣味的實驗、深度的實驗室參觀等，引領學生揭開物理神秘的面紗，體會科學之美，並在單調的高中生活之餘放鬆心情、展現自我、增進人際關係。</p>
-						<p>　　在歷屆的台大物理營中，我們成功地向高中生介紹現今物理各領域的蓬勃發展，展現物理學的實際應用面，並藉此讓學生重新認識自我。我們的努力成效卓著，台大物理營在全國高中生中已成為口耳相傳的熱門營隊。</p>
-					</div>
-					<div class="col-md-6">
-						<h4>歷屆台大物理營</h4>
-						<table class="table">
-							<thead>
-								<tr>
-									<th>年份</th>
-									<th>營隊主題</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>2012　台大物理營</td>
-									<td>
-										<a href="../2012">物是人非</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2013　台大物理營</td>
-									<td>
-										<a href="../2013">Time&nbsp;Traveler</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2014　台大物理營</td>
-									<td>
-										<a href="../2014">Pauli&nbsp;Island</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2015　台大物理營</td>
-									<td>
-										<a href="../2015">Final&nbsp;Theory</a>
-									</td>
-								</tr>
-								<tr>
-									<td>2016　台大物理營</td>
-									<td>
-										<a href="../2016">奇異點&nbsp;Singularity</a>
-									</td>
-								</tr>
-								<tr>
+			
+			<div class="section" id="section_history">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h2>營隊簡史</h2>
+							<p>　　台大物理營是台大物理系學生會於每年寒假時會例行舉辦之冬令營隊活動，自民國八十七年首辦以來，至今已準備邁入第21屆。</p>
+							<p>　　「物理」這門科學，對於高中生來說常建立於其眾多的公式與繁雜的計算，殊不知物理的內涵，遠非一般高中教育所能述盡。我們將透過精心規劃的活動、豐富生動的演講、新奇趣味的實驗、深度的實驗室參觀等，引領學生揭開物理神秘的面紗，體會科學之美，並在單調的高中生活之餘放鬆心情、展現自我、增進人際關係。</p>
+							<p>　　在歷屆的台大物理營中，我們成功地向高中生介紹現今物理各領域的蓬勃發展，展現物理學的實際應用面，並藉此讓學生重新認識自我。我們的努力成效卓著，台大物理營在全國高中生中已成為口耳相傳的熱門營隊。</p>
+						</div>
+						<div class="col-md-6">
+							<h4>歷屆台大物理營</h4>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>年份</th><th>營隊主題</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2012　台大物理營</td><td>物是人非</td>
+									</tr>
+									<tr>
+										<td>2013　台大物理營</td><td>Time&nbsp;Traveler</td>
+									</tr>
+									<tr>
+										<td>2014　台大物理營</td><td>Pauli&nbsp;Island</td>
+									</tr>
+									<tr>
+										<td>2015　台大物理營</td><td><a href="../2015">Final&nbsp;Theory</a></td>
+									</tr>
+									<tr>
+										<td>2016　台大物理營</td><td><a href="../2016">奇異點&nbsp;Singularity</a></td>
+									</tr>
+									<tr>
 									<td>2017　台大物理營</td>
 									<td>
 										<a href="../2017">Maxwell's&nbsp;Demon</a>
 									</td>
-									<tr>
-										<td>
-											<b>2019　台大物理營</b>
-										</td>
-										<td>
-											<b>Duality</b>
-										</td>
-									</tr>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="section" id="section_table">
-			<div class="container">
-				<div class="row">
-					<div style="margin-top: 6em" class="col-md-6">						
-						<h2>營隊資訊</h2>
-						<h4>活動時間及地點</h4>
-						<p>活動日期：2019年1月25日至1月29日，共計5天4夜</p>
-						<p>活動地點：國立台灣大學物理學系暨凝態研究中心、國立台灣大學校園</p>
-						<p>住宿地點：瘋台北青年旅店(台北市中正區延平南路21號2樓)</p>
-						<i>◎本營隊採統一住宿方式，參與者不得單獨外宿</i>
-						<h4>招收對象</h4>
-						<p>學員將從全國各公私立高級中學學生招收，預計招收男女學員各50名，共100名。我們將依照學員的居住地、學校和自我介紹進行篩選，讓各地區對物理有興趣的高中生都有機會參加物理營！</p>
-						<h4>報名費用</h4>
-						<p>一般生：新台幣6500元整(另有清寒學生補助，請見"常見問題")</p>
-						<h4>報名方式</h4>
-						<p>一律採線上報名，12 / 20 (三) 將在網站上公布名單並寄信通知。屆時正取學員請於繳費期間內匯款，才算完成報名，否則將由備取學生依序遞補名額。</p>
-						<p>報名連結：<a href="https://goo.gl/forms/ms6B6P6kVkGar7842">https://goo.gl/forms/ms6B6P6kVkGar7842</a> </p>
-
-						<p>報名截止日期：2019年12月17日(五)</p>
-					</div>
-					<div class="col-md-1"></div>
-					<div class="col-md-4">
-						<br />
-						<br />
-						<a href="img/poster.png">
-							<img src="img/poster.png" class="img-responsive" />
-						</a>
-						<p>(點擊海報圖片可看大圖)</p>
-					</div>
-					<div class="col-md-1">
-					</div>
-				</div>
-			</div>
-		</div>		
-		<div class="section" id="section_qa">
-			<div class="container">
-				<div class="row">
-					<div style="margin-top: 5em" class="col-md-12">
-						<h2>常見問題</h2>
-						<div class="panel-group" id="accordion">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-tittle">
-										<a data-toggle="collapse" data-parent="#accordion" href="#CollapseOne">
-											Q1：參加台大物理營需要物理很好嗎？要不要有預備知識？
-										</a>
-									</h4>
-								</div>
-								<div id="CollapseOne" class="panel-collapse collapse in">
-									<div class="panel-body">
-										<p>主辦這個營隊的目的，是讓所有的學員可以認識物理之美，跳脫課本裡艱澀難懂的公式與敘述，讓物理能真正的「活」起來。而參加這個營隊，我們認為重點並不在於是否擁有深厚的物理基礎，而是應以個人的興趣作為考量，營隊中大多數的時間將與物理的現象原理有所相關，因此只要您對任何物理相關的事務有興趣，那這個營隊絕對是你最佳的選擇！由於參加物理營的學員們程度不一，而我們希望讓大家都能順利吸收物理營中的所見所聞，因此並不會預先設定大家應該擁有哪些物理知識，也就是說，參加台大物理營是不需要任何預備知識的唷！營隊中如有遇到不懂的地方也請不用擔心，小隊輔或其他工作人員都會很樂意幫您解惑唷！</p>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-tittle">
-										<a data-toggle="collapse" data-parent="#accordion" href="#CollapseTwo">
-											Q2：篩選學員的方式為何？
-										</a>
-									</h4>
-								</div>
-								<div id="CollapseTwo" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>1. 報名資訊填寫完整者</p>
-										<p>2. 可由自我介紹、報名動機中看出對本營隊之熱誠者</p>
-										<p>3. 居住地區與其他學員重複較少者</p>
-										<i>為了平衡營隊學員的組成，男女將分開進行遴選、各招收50名學員</i>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-tittle">
-										<a data-toggle="collapse" data-parent="#accordion" href="#CollapseThree">
-											Q3：若臨時有事不克參加，該怎麼通知你們？可以自行找人頂替嗎？
-										</a>
-									</h4>
-								</div>
-								<div id="CollapseThree" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>若臨時決定放棄錄取機會，請在錄取名單公佈後，寄信到物理營的聯絡信箱告知我們。請註明包含姓名、學校、身分證字號之基本資料。因故無法參加，不可以私自找人頂替，也無法指定讓給有報名但沒有錄取的同學，關於這點請配合。報到時將會核對身分，請勿冒名參加。</p>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-tittle">
-										<a data-toggle="collapse" data-parent="#accordion" href="#CollapseFour">
-											Q4：請問我可以跟認識的朋友同隊嗎？
-										</a>
-									</h4>
-								</div>
-								<div id="CollapseFour" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>基本上我們不會把認識的同學分在同隊。這是一個營隊，會有各個地方的人來參加，為了公平起見，要考慮所有學生的權益，我們不希望讓已經互相熟識的人在同一隊，這樣會減少其他同學跟你們互動的機會。同時也可以讓大家，尤其是獨自參加的人，可以更容易融入這個營隊：)</p>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-tittle">
-										<a data-toggle="collapse" data-parent="#accordion" href="#CollapseFive">
-											Q5：我家住台北，請問可以不用住宿嗎？
-										</a>
-									</h4>
-								</div>
-								<div id="CollapseFive" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>首先先向各位報名的學員說明，因為我們是一個五天四夜的營隊，基本上我們除了希望在營期間能給學員們許多物理上的知識之外，更重要的，我們還有設計許多的活動是需要學員在這幾天跟其他來自台灣各地的高中生討論的，而我們也期盼讓學員們體驗不一樣的團體生活，讓來自各地的學員發展友誼，並留下美好的回憶！因此即使家住在附近也必須跟著大家一起住宿喔！</p>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-tittle">
-										<a data-toggle="collapse" data-parent="#accordion" href="#CollapseSix">
-											Q6：我很想參加，但我是清寒學生怎麼辦？
-										</a>
-									</h4>
-								</div>
-								<div id="CollapseSix" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>台大物理營的宗旨是著讓各類學生都可以接觸到物理知識的精神，因此有著清寒學生補助計畫。費用
-											<i>半額減免</i>，報名費用為新台幣3000元整（需持有相關證明，方法請見
-											<a href="poverty.html">清寒學生減免須知</a>。）</p>
-									</div>
-								</div>
-							</div>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>2019　台大物理營</b>
+                                        </td>
+                                        <td>
+                                            <b>Duality</b>
+                                        </td>
+                                    </tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="section" id="section_event">
-			<div class="slide">
+			
+            <div class="section" id="section_table">
+                        <div class="container">
+                            <div class="row">
+                                <div style="margin-top: 3em" class="col-md-6">						
+                                    <h2>營隊資訊</h2>
+                                    <h4>活動時間及地點</h4>
+                                    <p>活動日期：2019年1月25日至1月29日，共計5天4夜</p>
+                                    <p>活動地點：國立台灣大學物理學系暨凝態研究中心、國立台灣大學校園</p>
+                                    <p>住宿地點：瘋台北青年旅店(台北市中正區延平南路21號2樓)</p>
+                                    <i>◎本營隊採統一住宿方式，參與者不得單獨外宿</i>
+                                    <h4>招收對象</h4>
+                                    <p>學員將從全國各公私立高級中學學生招收，預計招收男女學員各50名，共100名。我們將依照學員的居住地、學校和自我介紹進行篩選，讓各地區對物理有興趣的高中生都有機會參加物理營！</p>
+                                    <h4>報名費用</h4>
+                                    <p>一般生：新台幣6500元整(另有清寒學生補助，請見"常見問題")</p>
+                                    <h4>報名方式</h4>
+                                    <p>一律採線上報名，12 / 20 (三) 將在網站上公布名單並寄信通知。屆時正取學員請於繳費期間內匯款，才算完成報名，否則將由備取學生依序遞補名額。</p>
+                                    <p>報名連結：<a href="https://goo.gl/forms/ms6B6P6kVkGar7842">https://goo.gl/forms/ms6B6P6kVkGar7842</a> </p>
+
+                                    <p>報名截止日期：2019年12月17日(五)</p>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-4">
+                                    <br />
+                                    <br />
+                                    <a href="img/poster.png">
+                                        <img src="img/poster.png" class="img-responsive" />
+                                    </a>
+                                    <p>(點擊海報圖片可看大圖)</p>
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+			
+<!--
+			<div class="section" id="section_List">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12">
-							<h2>活動簡介</h2>
-							<h4>始業式&破冰</h4>
-							<p>小隊員們在報到、分發小隊後，就正式進入了五天四夜的物理營行程囉！除了正式的始業典禮，我們更準備了大型破冰遊戲，讓大家能盡快融入這個營隊。</p>
-							<h4>迎新晚會</h4>
-							<p>除了有工人們精心準備的表演節目之外，我們也將帶領小隊員們進行大型團康，拉進彼此的距離，化解初識的羞澀。</p>
-							<h4>學術演講</h4>
-							<p>對於做過各種研究的大學教授們，是否總是有一種高高在上、難以親近的感覺呢？在營隊中你將可以親耳聽見他們演講，而且一聽就是四場！</p>
-							<h4>學術課程</h4>
-							<p>由物理系的學長姊們親自授課，簡單又富含學問的課程內容，必定讓你收穫滿滿！</p>
-							<h4>趣味實驗&成果發表</h4>
-							<p>從設計、採買、製作，和你的組員們一起腦力激盪，建造屬於自己小隊的裝置，解決任務！</p>
+						<h2>錄取名單</h2>
+						<b style="color:#FF007C">最終錄取名單已出來了囉，快來看看自己在哪個小隊吧~！</b><br />
+						<div>
+							<iframe width="95%" height="440" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQvDX0bCsX8gRiS9IkluRsCAql6ASeePsgi6vWsiDHgwPyKi-Fq52mp6uxIAjiqxKqR-sDY1qdTIfqB/pubhtml?widget=true&amp;headers=false"></iframe>
+						</div>
+						<div>
+							<br />
+							<p>若您是錄取學員，最新的行前通知會在下周陸續開始～期待在寒假見到大家！</p>
+							<p><span style = "color: #ff0000">請注意</span>：由於備取已經全面結束，本營隊不再受理退款事宜。如有造成不便，敬請見諒。</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="slide">
+-->
+			
+<!--
+			<div class="section" id="section_information">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12">
-							<h2>活動簡介</h2>
-							<h4>RPG跑關</h4>
-							<p>RPG即角色扮演遊戲，由小隊員扮演的冒險隊即將出發！闖過精心設計的關卡，探索各角色間錯綜複雜的關係，解開謎底。</p>
-							<h4>3D卡牌對決</h4>
-							<p>在一場平靜似水的檯面上，背後暗藏著的竟是人心互鬥的層層詭計？本遊戲讓你身歷卡牌之境，要如何自保、窺伺、偵查？全靠你與生俱來的智慧與勇氣！</p>
-							<h4>據點攻防戰</h4>
-							<p>你必須是尖銳的槍，努力穿破敵人的盾；你更必須是堅硬的盾，抵擋敵人一波波的攻勢。為自己的陣營佔領領土與據點，以獲得勝利！</p>
-							<h4>制服晚會</h4>
-							<p>經過四天三夜的相處，在營期的最後一晚，我們要以歡欣鼓舞的舞會凝聚所有人的感情，在彼此心中留下一個美好的回憶。</p>
-							<h4>結業式</h4>
-							<p>進入整個物理營的尾聲，將頒發證書與獎勵品，鼓勵大家這幾天認真的參與；所有人在溫馨愉悅的氣氛下踏上歸途，期待下次再相會。</p>
+						<div class="col-sm-6">
+							<h2>行前通知</h2>
+							<br/>
+							<p>各位小隊員大家好，</p>
+							<p>距離上營只剩下一個月了，以下檔案中內含重要事項，請務必仔細閱讀過！</p>
+							<p>近期內隊輔會用電話和各位進行聯絡，請大家在電話中告知隊輔自己的集合地點。</p>
+							<p>如果有任何問題，歡迎也直接詢問隊輔喔！</p>
+							<br/>
+							<p><span>※&nbsp;<a href="https://drive.google.com/file/d/0B0fAksbUlEYNd21BaFBzRnplWjQ/view?usp=sharing" target="_blank">2017台大物理營_行前通知</a></span></p>
+							<p><span>※&nbsp;<a href="https://drive.google.com/file/d/0B0fAksbUlEYNeVVfUTRveW0yU1U/view?usp=sharing" target="_blank">2017台大物理營_家長同意書</a></span></p>
+							<br/>
+							<p><b style="color:#FF007C">＊家長同意書請列印並填妥後，在1 / 21(六)報到時交回。</b></p>
+						</div>
+						<div class="col-sm-6">
+							<img src="img/img_2.jpg" class="img-responsive"/ height="auto" width="auto">
+						</div>
+					</div>
+				</div>
+			</div>
+-->
+			<!--
+			<div class="section" id="section_Payment">
+				<div class="container">
+					<div class="row">
+						<h2>繳費方法</h2>
+						<div>
+							<h4>繳費流程</h4>
+							<p>1. 請用以下三種方式將報名費匯款至指定匯款帳戶。</p>
+							<p><small>	＜方式一＞ 郵局直接轉帳</small></p>
+							<p><small>	＜方式二＞ 郵局無摺匯款</small></p>
+							<p><small>	＜方式三＞ ATM轉帳</small></p>
+							<p>2. 完成繳費後填寫以下表單，以方便本營隊確認繳費。</p>
+							<p>繳費確認表單：<a href = "https://goo.gl/forms/J1oJMhj0MlSLOwjg1">確認表單</a></p>
+							<p>3. 若需要申請清寒生補助，請將相關證明文件掃描/拍照，並Email至營隊信箱 ( camp@phys.tw ) 。</p>
+							<p>4. 確認繳費後，本營隊將以Email進行通知，並將名單已繳費欄位打勾。若許久未接到回應，請主動與我們聯絡。</p>
+							<h4>匯款帳戶</h4>
+							<p>郵局代碼：700（台大郵局）</p>
+							<p>匯款戶名：國立臺灣大學物理學系學生會彭達剴</p>
+							<p>匯款帳號：0001236-0523054</p>
+							<p>報名費：新台幣伍仟元整（清寒生補助：新台幣倆仟伍佰元整）</p>
+							<h4>匯款期限：2016/12/18（日）晚上六點整。（以繳費時間為準）</h4>
+							<p style = "color: #ff0000">注意：若未如期完成繳費，本營隊將取消您的錄取資格。</p>
+						</div>
+						<div>
+							<h4>退費流程</h4>
+							<p>1. 最晚在<span style = "color: #ff0000">12/22（公佈最終錄取名單前一天）的晚上11:59</span>，若因故不克參加，請儘速告知本營隊，方便學員遞補之作業，此時仍可全額退費。</p>
+							<p>2. 12/23公佈最終錄取名單後，因為無法再遞補學員，故若臨時因故不克參加，將不再退費。</p>
+							<p>3. 本營期為2017年1月21日到1月25日，共計五天四夜。營隊期間必須全程參與，如有必須離開的時段，敬請寄信至營隊信箱 ( camp@phys.tw ) 告知。考慮到其他報名學員的權益，對於中途因故需暫離者，我們將讓出您的名額。</p>
+							<p></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			-->
+			<div class="section" id="section_qa">
+				<div class="container">
+					<div class="row">	
+						<div style="margin-top: 3em" class="col-md-12">
+							<h2>常見問題</h2>
+							<div class="panel-group" id = "accordion">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-tittle">
+											<a data-toggle="collapse" data-parent="#accordion" href="#CollapseOne">
+												Q1：參加台大物理營需要物理很好嗎？要不要有預備知識？
+											</a>
+										</h4>
+									</div>
+									<div id="CollapseOne" class="panel-collapse collapse in">
+										<div class="panel-body">
+											<p>主辦這個營隊的目的，是讓所有的學員可以認識物理之美，跳脫課本裡艱澀難懂的公式與敘述，讓物理能真正的「活」起來。而參加這個營隊，我們認為重點並不在於是否擁有深厚的物理基礎，而是應以個人的興趣作為考量，營隊中大多數的時間將與物理的現象原理有所相關，因此只要您對任何物理相關的事務有興趣，那這個營隊絕對是你最佳的選擇！由於參加物理營的學員們程度不一，而我們希望讓大家都能順利吸收物理營中的所見所聞，因此並不會預先設定大家應該擁有哪些物理知識，也就是說，參加台大物理營是不需要任何預備知識的唷！營隊中如有遇到不懂的地方也請不用擔心，小隊輔或其他工作人員都會很樂意幫您解惑唷！</p>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-tittle">
+											<a data-toggle="collapse" data-parent = "#accordion" href="#CollapseTwo">
+												Q2：篩選學員的方式為何？
+											</a>
+										</h4>
+									</div>
+									<div id="CollapseTwo" class="panel-collapse collapse">
+										<div class="panel-body">
+											<p>1. 報名資訊填寫完整者</p>
+											<p>2. 可由自我介紹、報名動機中看出對本營隊之熱誠者</p>
+											<p>3. 居住地區與其他學員重複較少者</p>
+											<i>為了平衡營隊學員的組成，男女將分開進行遴選、各招收50名學員</i>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-tittle">
+											<a data-toggle="collapse" data-parent = "#accordion" href="#CollapseThree">
+												Q3：若臨時有事不克參加，該怎麼通知你們？可以自行找人頂替嗎？ 
+											</a>
+										</h4>
+									</div>
+									<div id="CollapseThree" class="panel-collapse collapse">
+										<div class="panel-body">
+											<p>若臨時決定放棄錄取機會，請在錄取名單公佈後，寄信到物理營的聯絡信箱告知我們。請註明包含姓名、學校、身分證字號之基本資料。因故無法參加，不可以私自找人頂替，也無法指定讓給有報名但沒有錄取的同學，關於這點請配合。報到時將會核對身分，請勿冒名參加。</p>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-tittle">
+											<a data-toggle="collapse" data-parent = "#accordion" href="#CollapseFour">
+												Q4：請問我可以跟認識的朋友同隊嗎？  
+											</a>
+										</h4>
+									</div>
+									<div id="CollapseFour" class="panel-collapse collapse">
+										<div class="panel-body">
+											<p>基本上我們不會把認識的同學分在同隊。這是一個營隊，會有各個地方的人來參加，為了公平起見，要考慮所有學生的權益，我們不希望讓已經互相熟識的人在同一隊，這樣會減少其他同學跟你們互動的機會。同時也可以讓大家，尤其是獨自參加的人，可以更容易融入這個營隊：)</p>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-tittle">
+											<a data-toggle="collapse" data-parent = "#accordion" href="#CollapseFive">
+												Q5：我家住台北，請問可以不用住宿嗎？   
+											</a>
+										</h4>
+									</div>
+									<div id="CollapseFive" class="panel-collapse collapse">
+										<div class="panel-body">
+											<p>首先先向各位報名的學員說明，因為我們是一個五天四夜的營隊，基本上我們除了希望在營期間能給學員們許多物理上的知識之外，更重要的，我們還有設計許多的活動是需要學員在這幾天跟其他來自台灣各地的高中生討論的，而我們也期盼讓學員們體驗不一樣的團體生活，讓來自各地的學員發展友誼，並留下美好的回憶！因此即使家住在附近也必須跟著大家一起住宿喔！</p>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-tittle">
+											<a data-toggle="collapse" data-parent = "#accordion" href="#CollapseSix">
+												Q6：我很想參加，但我是清寒學生怎麼辦？   
+											</a>
+										</h4>
+									</div>
+									<div id="CollapseSix" class="panel-collapse collapse">
+										<div class="panel-body">
+											<p>台大物理營的宗旨是著讓各類學生都可以接觸到物理知識的精神，因此有著清寒學生補助計畫。費用<i>半額減免</i>，報名費用為新台幣3000元整（需持有相關證明，方法請見<a href="poverty.html">清寒學生減免須知</a>。）</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section" id="section_event">
+				<div class="slide" >
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<h2>活動簡介</h2>
+								<h4>始業式&破冰</h4>
+								<p>小隊員們在報到、分發小隊後，就正式進入了五天四夜的物理營行程囉！除了正式的始業典禮，我們更準備了大型破冰遊戲，讓大家能盡快融入這個營隊。</p>
+								<h4>迎新晚會</h4>
+								<p>除了有工人們精心準備的表演節目之外，我們也將帶領小隊員們進行大型團康，拉進彼此的距離，化解初識的羞澀。</p>
+								<h4>學術演講</h4>
+								<p>對於做過各種研究的大學教授們，是否總是有一種高高在上、難以親近的感覺呢？在營隊中你將可以親耳聽見他們演講，而且一聽就是四場！</p>
+								<h4>學術課程</h4>
+								<p>由物理系的學長姊們親自授課，簡單又富含學問的課程內容，必定讓你收穫滿滿！</p>
+								<h4>趣味實驗&成果發表</h4>
+								<p>從設計、採買、製作，和你的組員們一起腦力激盪，建造屬於自己小隊的裝置，解決任務！</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slide" >
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<h2>活動簡介</h2>
+								<h4>RPG跑關</h4>
+								<p>RPG即角色扮演遊戲，由小隊員扮演的冒險隊即將出發！闖過精心設計的關卡，探索各角色間錯綜複雜的關係，解開謎底。</p>
+								<h4>3D卡牌對決</h4>
+								<p>在一場平靜似水的檯面上，背後暗藏著的竟是人心互鬥的層層詭計？本遊戲讓你身歷卡牌之境，要如何自保、窺伺、偵查？全靠你與生俱來的智慧與勇氣！</p>
+								<h4>據點攻防戰</h4>
+								<p>你必須是尖銳的槍，努力穿破敵人的盾；你更必須是堅硬的盾，抵擋敵人一波波的攻勢。為自己的陣營佔領領土與據點，以獲得勝利！</p>
+								<h4>制服晚會</h4>
+								<p>經過四天三夜的相處，在營期的最後一晚，我們要以歡欣鼓舞的舞會凝聚所有人的感情，在彼此心中留下一個美好的回憶。</p>
+								<h4>結業式</h4>
+								<p>進入整個物理營的尾聲，將頒發證書與獎勵品，鼓勵大家這幾天認真的參與；所有人在溫馨愉悅的氣氛下踏上歸途，期待下次再相會。</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section" id="section_contact">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-6">
+							<img src="img/img_3.jpg" class="img-responsive" />
+						</div>
+						<div class="col-xs-6" >
+							<br />
+							<br />
+							<h2>聯絡我們</h2>
+							<br />
+							<p>
+								email：camp@phys.tw<br />
+								facebook：<a href = "https://www.facebook.com/NTUphys/">https://www.facebook.com/NTUphys/</a>
+							</p>
+							<br />
+							<p>總召　周建宇</p>
+						      <p>副召　吳德威、鄭定宇、孫振、鍾承叡、呂佳軒、王奕誠
+						</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="section" id="section_contact">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-6">
-						<img src="img/img_3.jpg" class="img-responsive" />
-					</div>
-					<div class="col-xs-6">
-						<br />
-						<br />
-						<h2>聯絡我們</h2>
-						<br />
-						<p>
-							email：
-							<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="385b595548784850414b164c4f">[email&#160;protected]</a>
-							<br /> facebook：
-							<a href="https://www.facebook.com/NTUphys/">https://www.facebook.com/NTUphys/</a>
-						</p>
-						<br />
-						<p>總召　周建宇</p>
-						<p>副召　吳德威、鄭定宇、孫振、鍾承叡、呂佳軒、王奕誠
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+		<!-- Modal -->
+		
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 
-
-
-	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="d79bfbe497239eee522ecb3d-text/javascript"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js" type="d79bfbe497239eee522ecb3d-text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="d79bfbe497239eee522ecb3d-text/javascript"></script>
-
-	<script src="js/vendors/jquery.slimscroll.min.js" type="d79bfbe497239eee522ecb3d-text/javascript"></script>
-	<script src="js/jquery.fullPage.min.js" type="d79bfbe497239eee522ecb3d-text/javascript"></script>
-	<script type="d79bfbe497239eee522ecb3d-text/javascript">
+		<!-- This following line is needed in case of using the default easing option or when using another
+		one rather than "linear" or "swing". You can also add the full jQuery UI instead of this file if you prefer -->
+		<script src="js/vendors/jquery.slimscroll.min.js"></script>
+		<script src="js/jquery.fullPage.min.js"></script>
+		<script>
 			$(document).ready(function() {
 				$('#fullpage').fullpage({
 					menu : '#myMenu',
-					anchors : ['cover', 'story', 'history', 'table', 'qa', 'event', 'contact'],
 					//anchors : ['cover', 'story', 'history', 'table', 'List', 'information', 'qa', 'event', 'contact'],
+                    anchors : ['cover', 'story', 'history', 'table', 'qa', 'event', 'contact'],
 					//nav 滾動的排序
 					navigation : true,
 					scrollOverflow : true
 				});
 			}); 
 		</script>
-		<!-- <script src="js/press_img.js"></script> -->
-		<script type="d79bfbe497239eee522ecb3d-text/javascript">
+		<script>
 			$(function(){
 			   $('[rel="tooltip"]').tooltip();
 			});
 		</script>
-	<script type="d79bfbe497239eee522ecb3d-text/javascript">
+		<script>
 			function aftersubmitted(event)
 			{
 				$('#myModal').modal('hide');
 				$('#myModal2').modal('show');
 			}
 		</script>
-	<script type="d79bfbe497239eee522ecb3d-text/javascript">
+		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -477,14 +558,11 @@
 			ga('require', 'displayfeatures');
 			ga('send', 'pageview');
 		</script>
-	<script type="d79bfbe497239eee522ecb3d-text/javascript">
+		<script>
 			//set "credit to" to the corner
 			function move_subscribe(){
 				document.getElementById("section_cover").getElementsByTagName("div")[0].style.verticalAlign = "bottom";
 			}
 		</script>
-	<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/2448a7bd/cloudflare-static/rocket-loader.min.js" data-cf-nonce="d79bfbe497239eee522ecb3d-"
-	 defer=""></script>
-</body>
-
+	</body>
 </html>
