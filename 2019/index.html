@@ -36,6 +36,17 @@
 			background-repeat: no-repeat;
     			text-align: center;
     		}
+		
+	@media screen and (max-width:600px){		
+		#section_cover {
+			background: url(img/cover_phone.png);
+			background-size: cover;
+			background-position: center center;
+			text-align: center;
+			background-repeat: repeat;
+			}
+		}
+
     		#section_cover h1
     		{
     			font-size: 80px;
@@ -124,7 +135,7 @@
 				<div class="container" id="cov" style = "float: right;">
 <!--
 					<div class="row" style = "text-align:right;">
-						<p style = "color: white; font-size:20px"><i><b>cover credit to 姮格摩·紬巾&nbsp;&nbsp;&nbsp;&nbsp;</b></i></p>
+						<p style = "color: white; font-size:20px"><i><b>cover credit to 太陽神的翼神龍&nbsp;&nbsp;</b></i></p>
 						
 						<p><a class="btn btn-primary" href="#story">↓↓↓Scroll Down↓↓↓</a></p>
 						
@@ -238,7 +249,7 @@
             <div class="section" id="section_table">
                         <div class="container">
                             <div class="row">
-                                <div style="margin-top: 3em" class="col-md-6">						
+                                <div class="col-md-6">						
                                     <h2>營隊資訊</h2>
                                     <h4>活動時間及地點</h4>
                                     <p>活動日期：2019年1月25日至1月29日，共計5天4夜</p>
@@ -350,7 +361,7 @@
 			<div class="section" id="section_qa">
 				<div class="container">
 					<div class="row">	
-						<div style="margin-top: 3em" class="col-md-12">
+						<div class="col-md-12">
 							<h2>常見問題</h2>
 							<div class="panel-group" id = "accordion">
 								<div class="panel panel-default">
@@ -536,6 +547,11 @@
 					scrollOverflow : true
 				});
 			}); 
+			
+		//auto toggle after clicked 
+		$('.navbar-nav>li>a').on('click', function(){
+			$('.navbar-collapse').collapse('hide');
+				});
 		</script>
 		<script>
 			$(function(){
